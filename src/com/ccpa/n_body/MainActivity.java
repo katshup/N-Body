@@ -23,6 +23,9 @@ public class MainActivity extends Activity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
+            	// Please note that there is something wrong with the way I've set up the GLsurfaceview in the OpenGL activity
+            	// It seems that it requires that it be threaded so we can overlay it 
+            	// please look up how to do that.
                 Intent goToNextActivity = new Intent(arg0.getContext(),OpenGL.class);
                 startActivity(goToNextActivity);
             }
