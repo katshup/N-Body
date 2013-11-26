@@ -16,9 +16,9 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-       nextButton = (Button) findViewById(R.id.button1);
-        
         setContentView(R.layout.activity_main);
+        
+        nextButton = (Button) findViewById(R.id.button1);
         
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
