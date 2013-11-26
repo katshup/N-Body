@@ -5,3 +5,7 @@ Just build on top of this.
 http://android-er.blogspot.com/2010/05/another-exercise-of-surfaceview-in.html
 
 Carlos
+
+
+how I got this working
+http://sorj.de/?p=206
