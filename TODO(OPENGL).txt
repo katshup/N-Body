@@ -1,0 +1,7 @@
+Hey, I'm just making note about what I did.
+
+Apparently you can overlap views, ie. have opengl be on the same page with buttons. That still needs to be figured out as whenever I attempt to run the program, it crashes instantly. 
+Might want to take a look at this site:
+http://android-er.blogspot.com/2010/05/another-exercise-of-surfaceview-in.html
+
+Carlos

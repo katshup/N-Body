@@ -1,0 +1,5 @@
+I created a place holder a simulation view (in the end this will span the entire screen in that all actions will be multi-touch gestures), button that will create an N-Body (later the button will be hidden and replace by a double-tap gesture), slider for N-Body sizing option (this will soon be replace by pinch and zoom gesture to increase/decrease the size of N-Body), as well as a silder for mass of the N-Body (which be replace by single-tap to select a particular N-Body and then dragging up and down to increase and decrease the mass of the N-Body.
+
+Cheers,
+Pete
+11.25.2013
