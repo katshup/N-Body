@@ -1,4 +1,4 @@
-package nbody;
+package com.arshajii.nbody.backend;
 
 public class Const {
 	// gravitational constant (units: m^3 kg^-1 s^-2)

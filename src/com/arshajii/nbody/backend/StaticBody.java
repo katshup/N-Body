@@ -1,4 +1,4 @@
-package nbody;
+package com.arshajii.nbody.backend;
 
 public class StaticBody extends Body {
 

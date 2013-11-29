@@ -1,4 +1,4 @@
-package nbody;
+package com.arshajii.nbody.backend;
 
 import java.io.IOException;
 import java.io.Writer;
