@@ -4,13 +4,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+// TEST
 public class Main {
 	public static void main(String[] args) throws IOException {
 		Body sun = new StaticBody(new Vec(0, 0), new Vec(0, 0),
 				Const.SOLAR_MASS);
 
-		Body earth = new Body(new Vec(149_600_000_000d, 0), new Vec(0,
-				30_000d / 3), 5.972E24);
+		Body earth = new Body(new Vec(149_600_000_000d, 0),
+				new Vec(0, 30_000d), 5.972E24);
 
 		Body sun2 = new StaticBody(new Vec(0, -149_600_000_000d * 2), new Vec(
 				0, 0), Const.SOLAR_MASS);

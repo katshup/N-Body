@@ -24,11 +24,11 @@ public class Universe {
 
 	public void step() {
 		for (Body body1 : bodies) {
-			Vec netForce = new Vec(0, 0);
+			MutableVec netForce = new MutableVec(0, 0);
 
 			for (Body body2 : bodies) {
 				if (body1 != body2) {
-					netForce = netForce.add(body1.forceFrom(body2));
+					netForce.inPlaceAdd(body1.forceFrom(body2));
 				}
 			}
 

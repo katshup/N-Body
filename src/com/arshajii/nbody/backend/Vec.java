@@ -1,7 +1,7 @@
 package com.arshajii.nbody.backend;
 
 public class Vec {
-	private double x, y;
+	protected double x, y;
 
 	public Vec(double x, double y) {
 		this.x = x;
