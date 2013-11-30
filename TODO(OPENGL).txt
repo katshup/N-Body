@@ -1,0 +1,11 @@
+Hey, I'm just making note about what I did.
+
+Apparently you can overlap views, ie. have opengl be on the same page with buttons. Please compile and run what you just downloaded. It works guys!
+Just build on top of this.
+http://android-er.blogspot.com/2010/05/another-exercise-of-surfaceview-in.html
+
+Carlos
+
+
+how I got this working
+http://sorj.de/?p=206

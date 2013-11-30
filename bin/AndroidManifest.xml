@@ -5,8 +5,12 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="18" />
+        android:minSdkVersion="10"
+        android:targetSdkVersion="19" />
+
+    <uses-feature
+        android:glEsVersion="0x00010000"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -21,6 +25,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ccpa.n_body.OpenGL"
+            android:label="@string/title_activity_open_gl" >
         </activity>
     </application>
 
