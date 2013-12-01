@@ -16,21 +16,34 @@
 package com.ccpa.n_body;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class OpenGL extends Activity {
 
     //private GLSurfaceView mGLView;
-
+	Button nextButton2;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.open_gl_view);
+        nextButton2 = (Button) findViewById(R.id.button1);
         // Create a GLSurfaceView instance and set it
         // as the ContentView for this Activity
         //mGLView = new MyGLSurfaceView(this);
-        setContentView(R.layout.open_gl_view);
+        
+        
+        nextButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Intent goToNextActivity = new Intent(arg0.getContext(),Compass_Mode.class);
+                startActivity(goToNextActivity);
+            }
+        });
+        
     }
 }
 /*
