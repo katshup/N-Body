@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 public class Universe {
-	private final Collection<Body> bodies = new ArrayList<>();
+	private final Collection<Body> bodies = new ArrayList<Body>();
 	private int time = 0;
 
 	public Universe(Collection<Body> bodies) {
