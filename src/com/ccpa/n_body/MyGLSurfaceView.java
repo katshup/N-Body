@@ -63,6 +63,8 @@ public class MyGLSurfaceView extends GLSurfaceView implements
 	@Override
 	public boolean onTouchEvent(MotionEvent e) {
 		this.gestureDetector.onTouchEvent(e);
+		//MyGLRenderer.addCircle(e.getRawX()/10, e.getRawY()/10);
+		//requestRender();
 		return super.onTouchEvent(e);
 	}
 
@@ -81,7 +83,10 @@ public class MyGLSurfaceView extends GLSurfaceView implements
 	@Override
 	public boolean onSingleTapConfirmed(MotionEvent e) {
 		// TODO Auto-generated method stub
-		return false;
+		MyGLRenderer.addCircle(e.getX()/10, e.getY()/10);
+		requestRender();
+		Log.d("Gestures", "onLong: " + e.toString());
+		return true;
 	}
 
 	@Override
@@ -102,6 +107,7 @@ public class MyGLSurfaceView extends GLSurfaceView implements
 		// TODO Auto-generated method stub
 		// Toast.makeText(context,"double Tap!",Toast.LENGTH_LONG).show();
 		Log.d("Gestures", "onLong: " + e.toString());
+		MyGLRenderer.addCircle(e.getX()/10, e.getY()/10);
 		requestRender();
 		// Intent goToNextActivity = new
 		// Intent(arg0.getContext(),Compass_Mode.class);

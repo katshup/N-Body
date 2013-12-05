@@ -15,12 +15,17 @@
  */
 package com.ccpa.n_body;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import android.opengl.GLSurfaceView;
 
 public class MyGLRenderer implements GLSurfaceView.Renderer {
+	private static List<Circle> circles = new ArrayList<Circle>(); // list of
+																	// circles
 
 	/* Called once to set up the view's OpenGL ES environment. */
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
@@ -41,21 +46,20 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 		gl.glFrustumf(-aspect, aspect, -1.0f, 1.0f, 1.0f, 10.0f);
 	}
 
-	float x = 0;
-
 	/* Called for each redraw of the view. */
 	public void onDrawFrame(GL10 gl) {
 		gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
 		gl.glMatrixMode(GL10.GL_MODELVIEW);
 		gl.glLoadIdentity();
-
 		gl.glTranslatef(0.0f, 0.0f, -3.0f);
 
-		Circle c = new Circle();
-		c.draw(gl, x, 0);
+		for (Circle c : circles) {
+			c.draw(gl);
+		}
+	}
 
-		if (x < 3)
-			x += 0.05;
+	public static void addCircle(float x, float y) {
+		circles.add(new Circle(x, y));
 	}
 
 }

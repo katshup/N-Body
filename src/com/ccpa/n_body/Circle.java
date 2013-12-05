@@ -8,16 +8,18 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class Circle {
 
-	private static final float REDUCTION = 0.15f;
+	private static final float REDUCTION = 400f;
 
 	private int points = 360;
 	private float vertices[] = { 0.0f, 0.0f, 0.0f };
 	private FloatBuffer vertBuff;
+	private float x, y;
 
 	// center of circle
 
-	public Circle() {
-
+	public Circle(float x, float y) {
+		this.x = x;
+		this.y = y;
 		vertices = new float[(points + 1) * 3];
 
 		for (int i = 3; i < (points + 1) * 3; i += 3) {
@@ -35,7 +37,7 @@ public class Circle {
 
 	}
 
-	public void draw(GL10 gl, float x, float y) {
+	public void draw(GL10 gl) {
 		gl.glPushMatrix();
 		gl.glTranslatef(x, y, 0);
 		gl.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
@@ -46,4 +48,8 @@ public class Circle {
 		gl.glPopMatrix();
 	}
 
+	public void setXY(float x, float y) {
+		this.x = x;
+		this.y = y;
+	}
 }
