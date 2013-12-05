@@ -101,8 +101,8 @@ public class MyGLSurfaceView extends GLSurfaceView implements
 		// TODO Auto-generated method stub
 		//Toast.makeText(context,"double Tap!",Toast.LENGTH_LONG).show();
 		Log.d("Gestures","onLong: " + e.toString());
-		Intent goToNextActivity = new Intent(arg0.getContext(),Compass_Mode.class);
-        startActivity(goToNextActivity);
+		//Intent goToNextActivity = new Intent(arg0.getContext(),Compass_Mode.class);
+        //startActivity(goToNextActivity);
 	}
 
 	@Override
