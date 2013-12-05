@@ -2,8 +2,8 @@ package com.arshajii.nbody.backend;
 
 public class StaticBody extends Body {
 
-	public StaticBody(Vec position, Vec velocity, double mass) {
-		super(position, velocity, mass);
+	public StaticBody(Vec position, double mass) {
+		super(position, new Vec(0, 0), mass);
 	}
 
 	@Override
