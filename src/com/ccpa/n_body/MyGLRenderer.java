@@ -18,14 +18,13 @@ package com.ccpa.n_body;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import android.opengl.GLES20;
+import android.opengl.GLES10;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLSurfaceView.Renderer;
 import android.opengl.Matrix;
 import android.util.Log;
 
 public class MyGLRenderer implements GLSurfaceView.Renderer { 
-	 
 	 
 	   /*  Called once to set up the view's OpenGL ES environment. */
 	   public void onSurfaceCreated(GL10 gl, EGLConfig config) { 
@@ -57,5 +56,6 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 	     tr.draw(gl);
 
 	   } 
+	  
 
 }
