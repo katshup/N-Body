@@ -22,8 +22,6 @@ import java.nio.ShortBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import android.opengl.GLES20;
-
 
 public class Triangle {
 	 

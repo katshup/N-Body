@@ -34,7 +34,7 @@
             android:label="@string/title_activity_open_gl" >
         </activity>
         <activity
-            android:name="com.ccpa.n_body.Compass_Mode"
+            android:name="com.ccpa.n_body.CompassMode"
             android:label="@string/title_activity_compass__mode" >
         </activity>
     </application>

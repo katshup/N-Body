@@ -1,12 +1,11 @@
 package com.ccpa.n_body;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.opengl.GLSurfaceView;
 
 public class MainActivity extends Activity {
 

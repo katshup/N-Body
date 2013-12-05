@@ -17,7 +17,6 @@ package com.ccpa.n_body;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -39,7 +38,7 @@ public class OpenGL extends Activity {
         nextButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Intent goToNextActivity = new Intent(arg0.getContext(),Compass_Mode.class);
+                Intent goToNextActivity = new Intent(arg0.getContext(),CompassMode.class);
                 startActivity(goToNextActivity);
             }
         });

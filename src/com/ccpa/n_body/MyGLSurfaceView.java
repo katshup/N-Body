@@ -16,54 +16,55 @@
 package com.ccpa.n_body;
 
 import android.content.Context;
-import android.content.Intent;
 import android.opengl.GLSurfaceView;
 import android.support.v4.view.GestureDetectorCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-import android.widget.Toast;
+
 //import android.view.MotionEvent;
 
 /**
- * A view container where OpenGL ES graphics can be drawn on screen.
- * This view can also be used to capture touch events, such as a user
- * interacting with drawn objects.
+ * A view container where OpenGL ES graphics can be drawn on screen. This view
+ * can also be used to capture touch events, such as a user interacting with
+ * drawn objects.
  */
-public class MyGLSurfaceView extends GLSurfaceView implements 
-		GestureDetector.OnGestureListener,
-		GestureDetector.OnDoubleTapListener{
- 
+public class MyGLSurfaceView extends GLSurfaceView implements
+		GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
+
 	GestureDetectorCompat gestureDetector;
 	Context context;
-	
-    public MyGLSurfaceView(Context context){
-        this(context, null);
-    }
+
+	public MyGLSurfaceView(Context context) {
+		this(context, null);
+	}
 
 	public MyGLSurfaceView(Context context, AttributeSet attrs) {
 		this(context, attrs, 0);
-		//gestureDetector = new GestureDetector(context, new GestureListener());
+		// gestureDetector = new GestureDetector(context, new
+		// GestureListener());
 	}
 
 	public MyGLSurfaceView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs);
-		
+
 		// Tell EGL to use a ES 1.0 Context
 		setEGLContextClientVersion(1);
-		// Set the renderer
+		setEGLConfigChooser(new MultisampleConfigChooser());
 		setRenderer(new MyGLRenderer());
-		
-		gestureDetector = new GestureDetectorCompat(context,this);
+		setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+
+		gestureDetector = new GestureDetectorCompat(context, this);
 		gestureDetector.setOnDoubleTapListener(this);
 	}
+
 	/* touch events */
 	@Override
-	   public boolean onTouchEvent(MotionEvent e){
-		   this.gestureDetector.onTouchEvent(e);
-		   return super.onTouchEvent(e);
-	   }
+	public boolean onTouchEvent(MotionEvent e) {
+		this.gestureDetector.onTouchEvent(e);
+		return super.onTouchEvent(e);
+	}
 
 	@Override
 	public boolean onDoubleTap(MotionEvent e) {
@@ -99,10 +100,12 @@ public class MyGLSurfaceView extends GLSurfaceView implements
 	@Override
 	public void onLongPress(MotionEvent e) {
 		// TODO Auto-generated method stub
-		//Toast.makeText(context,"double Tap!",Toast.LENGTH_LONG).show();
-		Log.d("Gestures","onLong: " + e.toString());
-		//Intent goToNextActivity = new Intent(arg0.getContext(),Compass_Mode.class);
-        //startActivity(goToNextActivity);
+		// Toast.makeText(context,"double Tap!",Toast.LENGTH_LONG).show();
+		Log.d("Gestures", "onLong: " + e.toString());
+		requestRender();
+		// Intent goToNextActivity = new
+		// Intent(arg0.getContext(),Compass_Mode.class);
+		// startActivity(goToNextActivity);
 	}
 
 	@Override
@@ -115,7 +118,7 @@ public class MyGLSurfaceView extends GLSurfaceView implements
 	@Override
 	public void onShowPress(MotionEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
