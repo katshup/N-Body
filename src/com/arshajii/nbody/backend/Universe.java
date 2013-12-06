@@ -5,9 +5,12 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 public class Universe {
-	private final Collection<Body> bodies = new ArrayList<Body>();
+	private final Collection<Body> bodies = Collections
+			.synchronizedList(new ArrayList<Body>());
+
 	private int time = 0;
 
 	public Universe() {
@@ -27,17 +30,20 @@ public class Universe {
 	}
 
 	public void step() {
-		for (Body body1 : bodies) {
-			MutableVec netForce = new MutableVec(0, 0);
+		synchronized (bodies) {
+			for (Body body1 : bodies) {
+				MutableVec netForce = new MutableVec(0, 0);
 
-			for (Body body2 : bodies) {
-				if (body1 != body2) {
-					netForce.inPlaceAdd(body1.forceFrom(body2));
+				for (Body body2 : bodies) {
+					if (body1 != body2) {
+						netForce.inPlaceAdd(body1.forceFrom(body2));
+					}
 				}
-			}
 
-			body1.move(netForce);
+				body1.move(netForce);
+			}
 		}
+
 		time++;
 	}
 

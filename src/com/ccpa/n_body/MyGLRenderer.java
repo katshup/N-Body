@@ -16,6 +16,7 @@
 package com.ccpa.n_body;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.microedition.khronos.egl.EGLConfig;
@@ -28,7 +29,8 @@ import com.arshajii.nbody.backend.Universe;
 
 public class MyGLRenderer implements GLSurfaceView.Renderer {
 
-	private static final List<BodyRendering> bodies = new ArrayList<BodyRendering>();
+	private static final List<BodyRendering> bodies = Collections
+			.synchronizedList(new ArrayList<BodyRendering>());
 	private static final Universe engine = new Universe();
 
 	/* Called once to set up the view's OpenGL ES environment. */
@@ -56,8 +58,10 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 		gl.glMatrixMode(GL10.GL_MODELVIEW);
 		gl.glLoadIdentity();
 
-		for (BodyRendering dr : bodies) {
-			dr.draw(gl);
+		synchronized (bodies) {
+			for (BodyRendering dr : bodies) {
+				dr.draw(gl);
+			}
 		}
 
 		engine.step();
