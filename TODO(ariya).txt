@@ -1,0 +1,8 @@
+Collision effect 
+Entities collied together and form a more massive entity 
+change the physics 
+Entities will combine color 
+Add a boundary a little outside the screen 
+User Menu Interface 
+Start button 
+Tutorial option
