@@ -66,7 +66,7 @@ public class MyGLSurfaceView extends GLSurfaceView {
 	private class GestureListener extends GestureDetector.SimpleOnGestureListener {
 		@Override
 		public void onLongPress(MotionEvent e) {
-			MyGLRenderer.addCircle(e.getX(), e.getY(), ((n.nextFloat()*20)+1), ((n.nextFloat())), ((n.nextFloat())), ((n.nextFloat())));
+			MyGLRenderer.addCircle(e.getX(), e.getY(), ((n.nextFloat()*5)+1), ((n.nextFloat())), ((n.nextFloat())), ((n.nextFloat())));
 			Log.d("Circle", e.getX() + ", " + e.getY());
 			requestRender();
 			//return true;

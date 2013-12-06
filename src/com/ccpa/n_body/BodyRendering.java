@@ -8,13 +8,13 @@ import com.arshajii.nbody.backend.Vec;
 
 public class BodyRendering {
 
-	private static final double DEFAULT_MASS = 100;
+	
 
 	private final Body data;
 	private final Circle image;
 
 	public BodyRendering(Universe universe, double x, double y, float SCALE, float R, float G, float B) {
-		data = new Body(new Vec(x, y), new Vec(0, 0), DEFAULT_MASS);
+		data = new Body(new Vec(x, y), new Vec(0, 0), SCALE*100);
 		universe.addBody(data);
 
 		image = new Circle((float) data.getPos().getX(), (float) data.getPos()

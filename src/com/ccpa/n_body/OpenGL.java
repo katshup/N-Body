@@ -30,7 +30,7 @@ public class OpenGL extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.open_gl_view);
-		nextButton2 = (Button) findViewById(R.id.button1);
+		/*nextButton2 = (Button) findViewById(R.id.button1);
 		// Create a GLSurfaceView instance and set it
 		// as the ContentView for this Activity
 		// mGLView = new MyGLSurfaceView(this);
@@ -42,7 +42,7 @@ public class OpenGL extends Activity {
 						CompassMode.class);
 				startActivity(goToNextActivity);
 			}
-		});
+		});*/
 	}
 }
 /*
