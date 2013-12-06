@@ -13,12 +13,12 @@ public class BodyRendering {
 	private final Body data;
 	private final Circle image;
 
-	public BodyRendering(Universe universe, double x, double y) {
+	public BodyRendering(Universe universe, double x, double y, float SCALE, float R, float G, float B) {
 		data = new Body(new Vec(x, y), new Vec(0, 0), DEFAULT_MASS);
 		universe.addBody(data);
 
 		image = new Circle((float) data.getPos().getX(), (float) data.getPos()
-				.getY());
+				.getY(), SCALE, R, G, B);
 	}
 
 	public void draw(GL10 gl) {

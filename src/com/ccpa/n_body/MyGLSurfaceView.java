@@ -15,6 +15,8 @@
  */
 package com.ccpa.n_body;
 
+import java.util.Random;
+
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.support.v4.view.GestureDetectorCompat;
@@ -30,10 +32,9 @@ import android.view.MotionEvent;
  * can also be used to capture touch events, such as a user interacting with
  * drawn objects.
  */
-public class MyGLSurfaceView extends GLSurfaceView implements
-		GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
-
-	GestureDetectorCompat gestureDetector;
+public class MyGLSurfaceView extends GLSurfaceView {
+	Random n = new Random();
+	GestureDetector gestureDetector;
 	Context context;
 
 	public MyGLSurfaceView(Context context) {
@@ -53,76 +54,22 @@ public class MyGLSurfaceView extends GLSurfaceView implements
 		setRenderer(new MyGLRenderer());
 		setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
 
-		gestureDetector = new GestureDetectorCompat(context, this);
-		gestureDetector.setOnDoubleTapListener(this);
+		gestureDetector = new GestureDetector(context, new GestureListener());
+		//gestureDetector.setOnDoubleTapListener(this);
 	}
-
-	/* touch events */
+	
 	@Override
 	public boolean onTouchEvent(MotionEvent e) {
-		this.gestureDetector.onTouchEvent(e);
-		MyGLRenderer.addCircle(e.getX(), e.getY());
-		Log.d("Circle", e.getX() + ", " + e.getY());
-		requestRender();
-		return super.onTouchEvent(e);
+		return gestureDetector.onTouchEvent(e);
 	}
-
-	@Override
-	public boolean onDoubleTap(MotionEvent e) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean onDoubleTapEvent(MotionEvent e) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean onSingleTapConfirmed(MotionEvent e) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean onDown(MotionEvent e) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
-			float velocityY) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void onLongPress(MotionEvent e) {
-		// TODO Auto-generated method stub
-		// Toast.makeText(context,"double Tap!",Toast.LENGTH_LONG).show();
-		// Intent goToNextActivity = new
-		// Intent(arg0.getContext(),Compass_Mode.class);
-		// startActivity(goToNextActivity);
-	}
-
-	@Override
-	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
-			float distanceY) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void onShowPress(MotionEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public boolean onSingleTapUp(MotionEvent e) {
-		// TODO Auto-generated method stub
-		return false;
+	
+	private class GestureListener extends GestureDetector.SimpleOnGestureListener {
+		@Override
+		public void onLongPress(MotionEvent e) {
+			MyGLRenderer.addCircle(e.getX(), e.getY(), ((n.nextFloat()*20)+1), ((n.nextFloat())), ((n.nextFloat())), ((n.nextFloat())));
+			Log.d("Circle", e.getX() + ", " + e.getY());
+			requestRender();
+			//return true;
+		}
 	}
 }

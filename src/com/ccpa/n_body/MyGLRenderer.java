@@ -67,8 +67,8 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 		engine.step();
 	}
 
-	public static void addCircle(float x, float y) {
-		bodies.add(new BodyRendering(engine, x, y));
+	public static void addCircle(float x, float y, float SCALE, float R, float G, float B) {
+		bodies.add(new BodyRendering(engine, x, y, SCALE, R, G, B));
 	}
 
 }

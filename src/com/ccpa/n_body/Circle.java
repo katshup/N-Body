@@ -3,21 +3,24 @@ package com.ccpa.n_body;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
+import java.util.Random;
 
 import javax.microedition.khronos.opengles.GL10;
 
 public class Circle {
 
-	private static final float SCALE = 2f;
-
 	private int points = 360;
-	private float vertices[] = { 0.0f, 0.0f, 0.0f };
+	public float vertices[] = { 0.0f, 0.0f, 0.0f };
 	private FloatBuffer vertBuff;
 	private float x, y;
+	private float R,G,B;
 
-	public Circle(float x, float y) {
+	public Circle(float x, float y, float SCALE, float R, float G, float B) {
 		this.x = x;
 		this.y = y;
+		this.R = R;
+		this.G = G;
+		this.B = B;
 		vertices = new float[(points + 1) * 3];
 
 		for (int i = 3; i < (points + 1) * 3; i += 3) {
@@ -38,7 +41,7 @@ public class Circle {
 	public void draw(GL10 gl) {
 		gl.glPushMatrix();
 		gl.glTranslatef(x, y, 0);
-		gl.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+		gl.glColor4f(R, G, B, 1.0f);
 		gl.glVertexPointer(3, GL10.GL_FLOAT, 0, vertBuff);
 		gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
 		gl.glDrawArrays(GL10.GL_TRIANGLE_FAN, 0, points / 2);
