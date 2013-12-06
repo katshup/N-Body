@@ -23,45 +23,36 @@ import android.widget.Button;
 
 public class OpenGL extends Activity {
 
-    //private GLSurfaceView mGLView;
+	// private GLSurfaceView mGLView;
 	Button nextButton2;
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.open_gl_view);
-        nextButton2 = (Button) findViewById(R.id.button1);
-        // Create a GLSurfaceView instance and set it
-        // as the ContentView for this Activity
-        //mGLView = new MyGLSurfaceView(this);
-        
-        
-        nextButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                Intent goToNextActivity = new Intent(arg0.getContext(),CompassMode.class);
-                startActivity(goToNextActivity);
-            }
-        });
-        
-    }
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.open_gl_view);
+		nextButton2 = (Button) findViewById(R.id.button1);
+		// Create a GLSurfaceView instance and set it
+		// as the ContentView for this Activity
+		// mGLView = new MyGLSurfaceView(this);
+
+		nextButton2.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				Intent goToNextActivity = new Intent(arg0.getContext(),
+						CompassMode.class);
+				startActivity(goToNextActivity);
+			}
+		});
+	}
 }
 /*
-    @Override
-    protected void onPause() {
-        super.onPause();
-        // The following call pauses the rendering thread.
-        // If your OpenGL application is memory intensive,
-        // you should consider de-allocating objects that
-        // consume significant memory here.
-        mGLView.onPause();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        // The following call resumes a paused rendering thread.
-        // If you de-allocated graphic objects for onPause()
-        // this is a good place to re-allocate them.
-        mGLView.onResume();
-    }
-}*/
+ * @Override protected void onPause() { super.onPause(); // The following call
+ * pauses the rendering thread. // If your OpenGL application is memory
+ * intensive, // you should consider de-allocating objects that // consume
+ * significant memory here. mGLView.onPause(); }
+ * 
+ * @Override protected void onResume() { super.onResume(); // The following call
+ * resumes a paused rendering thread. // If you de-allocated graphic objects for
+ * onPause() // this is a good place to re-allocate them. mGLView.onResume(); }
+ * }
+ */

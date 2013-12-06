@@ -10,6 +10,10 @@ public class Universe {
 	private final Collection<Body> bodies = new ArrayList<Body>();
 	private int time = 0;
 
+	public Universe() {
+
+	}
+
 	public Universe(Collection<Body> bodies) {
 		this.bodies.addAll(bodies);
 	}

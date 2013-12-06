@@ -42,8 +42,6 @@ public class MyGLSurfaceView extends GLSurfaceView implements
 
 	public MyGLSurfaceView(Context context, AttributeSet attrs) {
 		this(context, attrs, 0);
-		// gestureDetector = new GestureDetector(context, new
-		// GestureListener());
 	}
 
 	public MyGLSurfaceView(Context context, AttributeSet attrs, int defStyle) {
@@ -53,7 +51,7 @@ public class MyGLSurfaceView extends GLSurfaceView implements
 		setEGLContextClientVersion(1);
 		setEGLConfigChooser(new MultisampleConfigChooser());
 		setRenderer(new MyGLRenderer());
-		setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+		setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
 
 		gestureDetector = new GestureDetectorCompat(context, this);
 		gestureDetector.setOnDoubleTapListener(this);
@@ -63,8 +61,9 @@ public class MyGLSurfaceView extends GLSurfaceView implements
 	@Override
 	public boolean onTouchEvent(MotionEvent e) {
 		this.gestureDetector.onTouchEvent(e);
-		//MyGLRenderer.addCircle(e.getRawX()/10, e.getRawY()/10);
-		//requestRender();
+		MyGLRenderer.addCircle(e.getX(), e.getY());
+		Log.d("Circle", e.getX() + ", " + e.getY());
+		requestRender();
 		return super.onTouchEvent(e);
 	}
 
@@ -83,10 +82,7 @@ public class MyGLSurfaceView extends GLSurfaceView implements
 	@Override
 	public boolean onSingleTapConfirmed(MotionEvent e) {
 		// TODO Auto-generated method stub
-		MyGLRenderer.addCircle(e.getX()/10, e.getY()/10);
-		requestRender();
-		Log.d("Gestures", "onLong: " + e.toString());
-		return true;
+		return false;
 	}
 
 	@Override
@@ -106,9 +102,6 @@ public class MyGLSurfaceView extends GLSurfaceView implements
 	public void onLongPress(MotionEvent e) {
 		// TODO Auto-generated method stub
 		// Toast.makeText(context,"double Tap!",Toast.LENGTH_LONG).show();
-		Log.d("Gestures", "onLong: " + e.toString());
-		MyGLRenderer.addCircle(e.getX()/10, e.getY()/10);
-		requestRender();
 		// Intent goToNextActivity = new
 		// Intent(arg0.getContext(),Compass_Mode.class);
 		// startActivity(goToNextActivity);

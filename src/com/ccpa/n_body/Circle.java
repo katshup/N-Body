@@ -8,14 +8,12 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class Circle {
 
-	private static final float REDUCTION = 400f;
+	private static final float SCALE = 2f;
 
 	private int points = 360;
 	private float vertices[] = { 0.0f, 0.0f, 0.0f };
 	private FloatBuffer vertBuff;
 	private float x, y;
-
-	// center of circle
 
 	public Circle(float x, float y) {
 		this.x = x;
@@ -24,8 +22,8 @@ public class Circle {
 
 		for (int i = 3; i < (points + 1) * 3; i += 3) {
 			double rad = (i * 360 / points * 3) * (3.14 / 180);
-			vertices[i] = REDUCTION * (float) Math.cos(rad);
-			vertices[i + 1] = REDUCTION * (float) Math.sin(rad);
+			vertices[i] = SCALE * (float) Math.cos(rad);
+			vertices[i + 1] = SCALE * (float) Math.sin(rad);
 			vertices[i + 2] = 0;
 		}
 

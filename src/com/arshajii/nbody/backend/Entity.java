@@ -13,7 +13,7 @@ public abstract class Entity {
 		this.pos = position;
 	}
 
-	protected Vec getPos() {
+	public Vec getPos() {
 		return pos;
 	}
 }

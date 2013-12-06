@@ -22,10 +22,14 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import android.opengl.GLSurfaceView;
+import android.util.Log;
+
+import com.arshajii.nbody.backend.Universe;
 
 public class MyGLRenderer implements GLSurfaceView.Renderer {
-	private static List<Circle> circles = new ArrayList<Circle>(); // list of
-																	// circles
+
+	private static final List<BodyRendering> bodies = new ArrayList<BodyRendering>();
+	private static final Universe engine = new Universe();
 
 	/* Called once to set up the view's OpenGL ES environment. */
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
@@ -39,11 +43,11 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 	 * screen orientation changes.
 	 */
 	public void onSurfaceChanged(GL10 gl, int width, int height) {
+		Log.d("Surface", width + ", " + height);
 		gl.glViewport(0, 0, width, height);
-		float aspect = (float) width / height;
 		gl.glMatrixMode(GL10.GL_PROJECTION);
 		gl.glLoadIdentity();
-		gl.glFrustumf(-aspect, aspect, -1.0f, 1.0f, 1.0f, 10.0f);
+		gl.glOrthof(0, width, height, 0, -1, 1);
 	}
 
 	/* Called for each redraw of the view. */
@@ -51,15 +55,16 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 		gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
 		gl.glMatrixMode(GL10.GL_MODELVIEW);
 		gl.glLoadIdentity();
-		gl.glTranslatef(0.0f, 0.0f, -3.0f);
 
-		for (Circle c : circles) {
-			c.draw(gl);
+		for (BodyRendering dr : bodies) {
+			dr.draw(gl);
 		}
+
+		engine.step();
 	}
 
 	public static void addCircle(float x, float y) {
-		circles.add(new Circle(x, y));
+		bodies.add(new BodyRendering(engine, x, y));
 	}
 
 }
