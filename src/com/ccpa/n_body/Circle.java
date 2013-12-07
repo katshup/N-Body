@@ -3,7 +3,6 @@ package com.ccpa.n_body;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
-import java.util.Random;
 
 import javax.microedition.khronos.opengles.GL10;
 

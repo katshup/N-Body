@@ -25,8 +25,9 @@ public class Body extends Entity {
 	public Vec forceFrom(Body other) {
 		Vec v = other.getPos().sub(getPos());
 		double r = v.mag();
-		return v.toUnitVector().mul(
-				Const.G * mass * other.mass / (r * r + Const.EPS * Const.EPS));
+		return v.toUnitVector()
+				.mul(Const.G * mass * other.mass
+						/ (r * r + Const.SOFT * Const.SOFT));
 	}
 
 	public void move(Vec netForce) {
@@ -35,5 +36,17 @@ public class Body extends Entity {
 
 		// update position according to new velocity:
 		setPos(getPos().add(velocity.mul(Const.dT)));
+	}
+
+	public void moveDirect(Vec delta) {
+		setPos(getPos().add(delta));
+	}
+
+	public void reverseVx() {
+		velocity = new Vec(-.75*velocity.getX(), .75*velocity.getY());
+	}
+
+	public void reverseVy() {
+		velocity = new Vec(.75*velocity.getX(), -.75*velocity.getY());
 	}
 }

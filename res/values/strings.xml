@@ -6,5 +6,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_open_gl">OpenGL</string>
     <string name="title_activity_compass__mode">Compass_Mode</string>
+    <string name="clear">Clear</string>
 
 </resources>

@@ -19,13 +19,10 @@ import java.util.Random;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;
-import android.support.v4.view.GestureDetectorCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-
-//import android.view.MotionEvent;
 
 /**
  * A view container where OpenGL ES graphics can be drawn on screen. This view
@@ -33,7 +30,9 @@ import android.view.MotionEvent;
  * drawn objects.
  */
 public class MyGLSurfaceView extends GLSurfaceView {
+
 	Random n = new Random();
+
 	GestureDetector gestureDetector;
 	Context context;
 
@@ -51,25 +50,73 @@ public class MyGLSurfaceView extends GLSurfaceView {
 		// Tell EGL to use a ES 1.0 Context
 		setEGLContextClientVersion(1);
 		setEGLConfigChooser(new MultisampleConfigChooser());
+
 		setRenderer(new MyGLRenderer());
 		setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
 
 		gestureDetector = new GestureDetector(context, new GestureListener());
-		//gestureDetector.setOnDoubleTapListener(this);
+		// gestureDetector.setOnDoubleTapListener(this);
 	}
-	
+
+	/* touch events */
 	@Override
 	public boolean onTouchEvent(MotionEvent e) {
-		return gestureDetector.onTouchEvent(e);
+		return this.gestureDetector.onTouchEvent(e);
 	}
-	
-	private class GestureListener extends GestureDetector.SimpleOnGestureListener {
+
+	/*
+	 * @Override public boolean onDoubleTap(MotionEvent e) {
+	 * MyGLRenderer.togglePaused(); return true; }
+	 * 
+	 * @Override public boolean onDoubleTapEvent(MotionEvent e) { return true; }
+	 * 
+	 * @Override public boolean onSingleTapConfirmed(MotionEvent e) {
+	 * MyGLRenderer.addCircle(e.getX(), e.getY());
+	 * 
+	 * Log.d("Tap", "onSingleTapConfirmed");
+	 * 
+	 * return true; }
+	 * 
+	 * @Override public boolean onDown(MotionEvent e) { Log.d("Tap", "onDown");
+	 * return true; }
+	 * 
+	 * @Override public boolean onFling(MotionEvent e1, MotionEvent e2, float
+	 * velocityX, float velocityY) {
+	 * 
+	 * Log.d("Tap", "onFling");
+	 * 
+	 * MyGLRenderer.addCircle(e1.getX(), e1.getY(), velocityX / VSCALE,
+	 * velocityY / VSCALE);
+	 * 
+	 * return true; }
+	 * 
+	 * @Override public void onLongPress(MotionEvent e) { Log.d("Tap",
+	 * "onLongPress"); }
+	 * 
+	 * @Override public boolean onScroll(MotionEvent e1, MotionEvent e2, float
+	 * distanceX, float distanceY) { // TODO Auto-generated method stub return
+	 * false; }
+	 * 
+	 * @Override public void onShowPress(MotionEvent e) { // TODO Auto-generated
+	 * method stub }
+	 * 
+	 * @Override public boolean onSingleTapUp(MotionEvent e) { return true;
+	 */
+
+	private class GestureListener extends
+			GestureDetector.SimpleOnGestureListener {
+		public GestureListener() {
+			// TODO Auto-generated constructor stub
+		}
+
 		@Override
 		public void onLongPress(MotionEvent e) {
-			MyGLRenderer.addCircle(e.getX(), e.getY(), ((n.nextFloat()*5)+1), ((n.nextFloat())), ((n.nextFloat())), ((n.nextFloat())));
+			MyGLRenderer.addCircle(e.getX(), e.getY(),
+					((n.nextFloat() *6) + 2), ((n.nextFloat())),
+					((n.nextFloat())), ((n.nextFloat())));
 			Log.d("Circle", e.getX() + ", " + e.getY());
 			requestRender();
-			//return true;
+			// return true; }
 		}
 	}
 }

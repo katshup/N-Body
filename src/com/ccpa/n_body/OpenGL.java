@@ -18,7 +18,9 @@ package com.ccpa.n_body;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Button;
 
 public class OpenGL extends Activity {
@@ -30,29 +32,48 @@ public class OpenGL extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.open_gl_view);
-		/*nextButton2 = (Button) findViewById(R.id.button1);
-		// Create a GLSurfaceView instance and set it
-		// as the ContentView for this Activity
-		// mGLView = new MyGLSurfaceView(this);
-
-		nextButton2.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				Intent goToNextActivity = new Intent(arg0.getContext(),
-						CompassMode.class);
-				startActivity(goToNextActivity);
-			}
-		});*/
+		/*
+		 * nextButton2 = (Button) findViewById(R.id.button1); // Create a
+		 * GLSurfaceView instance and set it // as the ContentView for this
+		 * Activity // mGLView = new MyGLSurfaceView(this);
+		 * 
+		 * nextButton2.setOnClickListener(new View.OnClickListener() {
+		 * 
+		 * @Override public void onClick(View arg0) { Intent goToNextActivity =
+		 * new Intent(arg0.getContext(), CompassMode.class);
+		 * 
+		 * startActivity(goToNextActivity); } });
+		 */
 	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.remove_last:
+			MyGLRenderer.removeLast();
+			break;
+		case R.id.clear:
+			MyGLRenderer.clear();
+			break;
+		case R.id.pause:
+			MyGLRenderer.togglePaused();
+			break;
+		case R.id.back_main:
+			MyGLRenderer.clear();
+			startActivity(new Intent(this, MainActivity.class));
+			break;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+
+		return true;
+	}
+
 }
-/*
- * @Override protected void onPause() { super.onPause(); // The following call
- * pauses the rendering thread. // If your OpenGL application is memory
- * intensive, // you should consider de-allocating objects that // consume
- * significant memory here. mGLView.onPause(); }
- * 
- * @Override protected void onResume() { super.onResume(); // The following call
- * resumes a paused rendering thread. // If you de-allocated graphic objects for
- * onPause() // this is a good place to re-allocate them. mGLView.onResume(); }
- * }
- */

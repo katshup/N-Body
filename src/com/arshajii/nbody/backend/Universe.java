@@ -13,6 +13,10 @@ public class Universe {
 
 	private int time = 0;
 
+	boolean walled = false;
+	private double xWallUp, xWallDown;
+	private double yWallUp, yWallDown;
+
 	public Universe() {
 
 	}
@@ -41,10 +45,44 @@ public class Universe {
 				}
 
 				body1.move(netForce);
+
+				if (walled) {
+					Vec pos = body1.getPos();
+
+					if (pos.getX() >= xWallUp || pos.getX() <= xWallDown) {
+						body1.reverseVx();
+					}
+
+					if (pos.getY() >= yWallUp || pos.getY() <= yWallDown) {
+						body1.reverseVy();
+					}
+				}
 			}
 		}
 
 		time++;
+	}
+
+	public void clear() {
+		bodies.clear();
+	}
+
+	public void moveAll(Vec delta) {
+		synchronized (bodies) {
+			for (Body body : bodies)
+				body.moveDirect(delta);
+		}
+	}
+
+	public void addWalls(double xWallUp, double xWallDown, double yWallUp,
+			double yWallDown) {
+
+		this.xWallUp = xWallUp;
+		this.xWallDown = xWallDown;
+		this.yWallUp = yWallUp;
+		this.yWallDown = yWallDown;
+
+		walled = true;
 	}
 
 	public void print(Writer w) {

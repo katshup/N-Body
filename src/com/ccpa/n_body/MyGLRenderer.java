@@ -26,12 +26,16 @@ import android.opengl.GLSurfaceView;
 import android.util.Log;
 
 import com.arshajii.nbody.backend.Universe;
+import com.arshajii.nbody.backend.Vec;
 
 public class MyGLRenderer implements GLSurfaceView.Renderer {
 
 	private static final List<BodyRendering> bodies = Collections
 			.synchronizedList(new ArrayList<BodyRendering>());
-	private static final Universe engine = new Universe();
+
+	private static final Universe universe = new Universe();
+
+	private static boolean paused = false;
 
 	/* Called once to set up the view's OpenGL ES environment. */
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
@@ -50,6 +54,8 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 		gl.glMatrixMode(GL10.GL_PROJECTION);
 		gl.glLoadIdentity();
 		gl.glOrthof(0, width, height, 0, -1, 1);
+
+		universe.addWalls(width, 0, height, 0);
 	}
 
 	/* Called for each redraw of the view. */
@@ -64,11 +70,35 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 			}
 		}
 
-		engine.step();
+		if (!paused) {
+			universe.step();
+		}
 	}
 
-	public static void addCircle(float x, float y, float SCALE, float R, float G, float B) {
-		bodies.add(new BodyRendering(engine, x, y, SCALE, R, G, B));
+	public static void addCircle(float xPos, float yPos, float SCALE, float R, float G, float B) {
+		bodies.add(new BodyRendering(universe, xPos, yPos, SCALE, R, G, B));
+	}
+
+	/*public static void addCircle(float xPos, float yPos) {
+		addCircle(xPos, yPos, 0, 0);
+	}*/
+
+	public static void togglePaused() {
+		paused = !paused;
+	}
+
+	public static void removeLast() {
+		if (!bodies.isEmpty())
+			bodies.remove(bodies.size() - 1);
+	}
+
+	public static void clear() {
+		bodies.clear();
+		universe.clear();
+	}
+
+	public void moveAll(float x, float y) {
+		universe.moveAll(new Vec(x, y));
 	}
 
 }
