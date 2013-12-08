@@ -26,7 +26,7 @@ public class Body extends Entity {
 		Vec v = other.getPos().sub(getPos());
 		double r = v.mag();
 		return v.toUnitVector()
-				.mul(Const.G * mass * other.mass
+				.mul(Universe.gravConst * mass * other.mass
 						/ (r * r + Const.SOFT * Const.SOFT));
 	}
 

@@ -12,6 +12,8 @@ public class Universe {
 			.synchronizedList(new ArrayList<Body>());
 
 	private int time = 0;
+	
+	public static double gravConst = Const.G;
 
 	boolean walled = false;
 	private double xWallUp, xWallDown;

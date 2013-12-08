@@ -15,6 +15,8 @@
  */
 package com.ccpa.n_body;
 
+import java.util.Random;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +27,7 @@ import android.widget.Button;
 
 public class OpenGL extends Activity {
 
+	Random rand = new Random();
 	// private GLSurfaceView mGLView;
 	Button nextButton2;
 
@@ -59,9 +62,6 @@ public class OpenGL extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.remove_last:
-			MyGLRenderer.removeLast();
-			break;
 		case R.id.clear:
 			MyGLRenderer.clear();
 			break;
@@ -72,6 +72,21 @@ public class OpenGL extends Activity {
 		case R.id.back_main:
 			MyGLRenderer.clear();
 			startActivity(new Intent(this, MainActivity.class));
+			break;
+		case R.id.settings:
+			startActivity(new Intent(this, Settings.class));
+			break;
+		case R.id.randColor:
+			if(globalVar.uniformColor){
+			globalVar.colorRed = (rand.nextFloat());
+			globalVar.colorGreen = (rand.nextFloat());
+			globalVar.colorBlue = (rand.nextFloat());
+			}
+			else
+			{
+				// Ali please do a Toast here
+				// Maybe move it to the Settings page
+			}
 			break;
 		default:
 			return super.onOptionsItemSelected(item);

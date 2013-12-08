@@ -32,6 +32,8 @@ import android.view.MotionEvent;
 public class MyGLSurfaceView extends GLSurfaceView {
 
 	Random n = new Random();
+	// the user picks the size. defaults to 10
+	public static int size = 10;
 
 	GestureDetector gestureDetector;
 	Context context;
@@ -111,11 +113,35 @@ public class MyGLSurfaceView extends GLSurfaceView {
 
 		@Override
 		public void onLongPress(MotionEvent e) {
-			MyGLRenderer.addCircle(e.getX(), e.getY(),
-					((n.nextFloat() *10) + 2), ((n.nextFloat())),
-					((n.nextFloat())), ((n.nextFloat())));
-			Log.d("Circle", e.getX() + ", " + e.getY());
-			requestRender();
+			if(!globalVar.uniformSize){
+				if(!globalVar.uniformColor){
+					//                                             SCALE                           Red                 Green               Blue
+					MyGLRenderer.addCircle(e.getX(), e.getY(), ((n.nextFloat() * size) + 3), ((n.nextFloat())), ((n.nextFloat())), ((n.nextFloat())));
+					Log.d("Circle", e.getX() + ", " + e.getY());
+					requestRender();
+				}
+				else
+				{
+					MyGLRenderer.addCircle(e.getX(), e.getY(), ((n.nextFloat() * size) + 3), globalVar.colorRed, globalVar.colorGreen, globalVar.colorBlue);
+					Log.d("Circle", e.getX() + ", " + e.getY());
+					requestRender();
+				}
+			}
+			else
+			{
+				if(!globalVar.uniformColor){
+					MyGLRenderer.addCircle(e.getX(), e.getY(), size+3, ((n.nextFloat())), ((n.nextFloat())), ((n.nextFloat())));
+					Log.d("Circle", e.getX() + ", " + e.getY());
+					requestRender();
+				}
+				else
+				{
+					MyGLRenderer.addCircle(e.getX(), e.getY(), size+3, globalVar.colorRed, globalVar.colorGreen, globalVar.colorBlue);
+					Log.d("Circle", e.getX() + ", " + e.getY());
+					requestRender();
+				}
+			}
+		
 			// return true; }
 		}
 	}

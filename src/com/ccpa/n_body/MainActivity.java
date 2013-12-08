@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 public class MainActivity extends Activity {
 
 	ImageButton nextButton;
+	ImageButton settingsButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,13 +22,23 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.getstarted_fullscreen);
 
 		nextButton = (ImageButton) findViewById(R.id.start);
-
+		settingsButton = (ImageButton) findViewById(R.id.settings);
+		
 		nextButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 
 				Intent goToNextActivity = new Intent(arg0.getContext(),
 						OpenGL.class);
+				startActivity(goToNextActivity);
+			}
+		});
+		
+		settingsButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				Intent goToNextActivity = new Intent(arg0.getContext(),
+						Settings.class);
 				startActivity(goToNextActivity);
 			}
 		});
