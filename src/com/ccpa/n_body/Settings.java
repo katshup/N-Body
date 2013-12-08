@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -30,7 +31,7 @@ public class Settings extends Activity{
 	SeekBar gravConstant;
 	SeekBar massSize;
 	CheckBox uniformSize, uniformColor;
-	ImageButton enterSimul;
+	ImageButton enterSimul, reset;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,7 @@ public class Settings extends Activity{
 		uniformSize = (CheckBox) findViewById(R.id.uniformSize);
 		uniformColor = (CheckBox) findViewById(R.id.uniformColor);
 		enterSimul = (ImageButton) findViewById(R.id.enterSimul);
+		reset = (ImageButton) findViewById(R.id.reset);
 		
 		if(Const.G == 6.67384E-11)
 		{
@@ -68,31 +70,31 @@ public class Settings extends Activity{
 		
 		if(MyGLSurfaceView.size == 5)
 		{
-			massSize.setProgress(10);
+			massSize.setProgress(0);
 		}
 		else if(MyGLSurfaceView.size == 10){
-			massSize.setProgress(20);
+			massSize.setProgress(15);
 		}
 		else if(MyGLSurfaceView.size == 15){
-			massSize.setProgress(30);
+			massSize.setProgress(25);
 		}
 		else if(MyGLSurfaceView.size == 20){
-			massSize.setProgress(40);
+			massSize.setProgress(35);
 		}
 		else if(MyGLSurfaceView.size == 25){
-			massSize.setProgress(50);
+			massSize.setProgress(45);
 		}
 		else if(MyGLSurfaceView.size == 30){
-			massSize.setProgress(60);
+			massSize.setProgress(55);
 		}
 		else if(MyGLSurfaceView.size == 35){
-			massSize.setProgress(70);
+			massSize.setProgress(65);
 		}
 		else if(MyGLSurfaceView.size == 40){
-			massSize.setProgress(80);
+			massSize.setProgress(75);
 		}
 		else if(MyGLSurfaceView.size == 45){
-			massSize.setProgress(90);
+			massSize.setProgress(85);
 		}
 		else if(MyGLSurfaceView.size == 50){
 			massSize.setProgress(100);
@@ -185,7 +187,7 @@ public class Settings extends Activity{
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				// TODO Auto-generated method stub
-				Toast.makeText(getApplicationContext(),"Mass size set to "+String.valueOf(MyGLSurfaceView.size), (Toast.LENGTH_SHORT)/2).show();
+				Toast.makeText(getApplicationContext(),"Mass size set to "+String.valueOf((MyGLSurfaceView.size)/5), (Toast.LENGTH_SHORT)/2).show();
 			}
 		});
 		
@@ -210,6 +212,36 @@ public class Settings extends Activity{
 					globalVar.colorGreen = (rand.nextFloat());
 					globalVar.colorBlue = (rand.nextFloat());
 				}
+			}
+			
+		});
+		
+		enterSimul.setOnClickListener( new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent goToNextActivity = new Intent(arg0.getContext(),
+						OpenGL.class);
+				startActivity(goToNextActivity);
+			}
+			
+		});
+		
+		reset.setOnClickListener( new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Const.G = 6.67384E-7;
+				MyGLSurfaceView.size = 10;
+				globalVar.uniformSize = false;
+				globalVar.uniformColor = false;
+				uniformSize.setChecked(globalVar.uniformSize);
+				uniformColor.setChecked(globalVar.uniformColor);
+				gravConstant.setProgress(100);
+				massSize.setProgress(25);
+				Toast.makeText(getApplicationContext(),"The settings have been reverted back to default.", (Toast.LENGTH_SHORT)/2).show();
 			}
 			
 		});
