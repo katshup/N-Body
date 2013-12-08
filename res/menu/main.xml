@@ -8,7 +8,7 @@
         android:title="Clear"/>
     <item
         android:id="@+id/pause"
-        android:title="Toggle Pause"/>
+        android:title="Pause/Resume"/>
     <item
         android:id="@+id/back_main"
         android:title="Back"/>

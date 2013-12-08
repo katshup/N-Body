@@ -112,7 +112,7 @@ public class MyGLSurfaceView extends GLSurfaceView {
 		@Override
 		public void onLongPress(MotionEvent e) {
 			MyGLRenderer.addCircle(e.getX(), e.getY(),
-					((n.nextFloat() *6) + 2), ((n.nextFloat())),
+					((n.nextFloat() *10) + 2), ((n.nextFloat())),
 					((n.nextFloat())), ((n.nextFloat())));
 			Log.d("Circle", e.getX() + ", " + e.getY());
 			requestRender();

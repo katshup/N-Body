@@ -21,31 +21,54 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int about_button=0x7f020000;
+        public static final int dark_background=0x7f020001;
+        public static final int enter_simulation2=0x7f020002;
+        public static final int flat_background=0x7f020003;
+        public static final int get_started_button=0x7f020004;
+        public static final int get_started_page=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
+        public static final int menu_screen=0x7f020007;
+        public static final int new_setting2=0x7f020008;
+        public static final int setting=0x7f020009;
+        public static final int tutorial_button=0x7f02000a;
+        public static final int welcome_screen=0x7f02000b;
     }
     public static final class id {
+        public static final int AbsoluteLayout1=0x7f08000a;
+        public static final int Button01=0x7f08000f;
+        public static final int Button02=0x7f080010;
+        public static final int Button03=0x7f080011;
         public static final int TextView01=0x7f080006;
-        public static final int action_settings=0x7f08000b;
-        public static final int back_main=0x7f08000f;
+        public static final int about=0x7f08000e;
+        public static final int action_settings=0x7f080013;
+        public static final int back_main=0x7f080017;
         public static final int body_opt_mass=0x7f080005;
         public static final int body_opt_size=0x7f080003;
         public static final int button1=0x7f080007;
-        public static final int clear=0x7f08000d;
+        public static final int clear=0x7f080015;
         public static final int compassInfo=0x7f080000;
         public static final int latitute=0x7f080001;
         public static final int longitude=0x7f080002;
-        public static final int myGLSurfaceView1=0x7f08000a;
-        public static final int pause=0x7f08000e;
+        public static final int myGLSurfaceView1=0x7f080012;
+        public static final int pause=0x7f080016;
         public static final int progressBar1=0x7f080008;
-        public static final int remove_last=0x7f08000c;
+        public static final int remove_last=0x7f080014;
+        public static final int settings=0x7f08000d;
+        public static final int start=0x7f08000b;
         public static final int textView1=0x7f080004;
         public static final int textView2=0x7f080009;
+        public static final int tutorial=0x7f08000c;
     }
     public static final class layout {
         public static final int activity_compass__mode=0x7f030000;
-        public static final int activity_main=0x7f030001;
-        public static final int body_options=0x7f030002;
-        public static final int open_gl_view=0x7f030003;
+        public static final int activity_fullscreen=0x7f030001;
+        public static final int activity_main=0x7f030002;
+        public static final int body_options=0x7f030003;
+        public static final int getstarted_fullscreen=0x7f030004;
+        public static final int menu_fullscreen=0x7f030005;
+        public static final int open_gl_view=0x7f030006;
+        public static final int simulation_fullscreen=0x7f030007;
     }
     public static final class menu {
         public static final int compass__mode=0x7f070000;

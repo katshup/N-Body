@@ -39,7 +39,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 
 	/* Called once to set up the view's OpenGL ES environment. */
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-		gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		gl.glClearColor(0.45f, 0.51f, 0.41f, 1.0f);
 		gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_NICEST);
 		gl.glEnable(GL10.GL_DEPTH_TEST);
 	}

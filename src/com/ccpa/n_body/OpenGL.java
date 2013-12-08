@@ -21,6 +21,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.ViewConfiguration;
+import android.view.Window;
 import android.widget.Button;
 
 public class OpenGL extends Activity {
@@ -31,7 +33,10 @@ public class OpenGL extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		//requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.open_gl_view);
+		//requestWindowFeature(Window.FEATURE_NO_TITLE);
 		/*
 		 * nextButton2 = (Button) findViewById(R.id.button1); // Create a
 		 * GLSurfaceView instance and set it // as the ContentView for this
@@ -64,6 +69,7 @@ public class OpenGL extends Activity {
 			break;
 		case R.id.pause:
 			MyGLRenderer.togglePaused();
+			//R.id.pause.setText("derp");
 			break;
 		case R.id.back_main:
 			MyGLRenderer.clear();
