@@ -5,10 +5,8 @@
     <item
         android:id="@+id/pause"
         android:title="Pause/Resume"/>
-    <item
-        android:id="@+id/back_main"
-        android:title="Back"/>
-    <item android:id="@+id/settings" android:title="Settings"></item>
-    <item android:id="@+id/randColor" android:title="New Color"></item>
+    <item android:id="@+id/newColor" android:title="New Color"></item>
+    <item android:id="@+id/settingsPage" android:title="Settings"></item><item android:id="@+id/endSimul" android:title="End Simulation" />
+    
 
 </menu>

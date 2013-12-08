@@ -2,73 +2,62 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/flat_background" >
+    android:background="@drawable/dark_background" >
 
-    <TextView
-        android:id="@+id/textView3"
+    <ImageView
+        android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/gravConstant"
-        android:layout_alignRight="@+id/gravConstant"
-        android:text="Fast"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/text_color" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="Universal gravitational constant"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/setting" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/uniformSize"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/uniform_size" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/uniformColor"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/uniform_color" />
 
     <SeekBar
         android:id="@+id/gravConstant"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/textView1"
-        android:layout_below="@+id/textView2" />
+        android:layout_below="@+id/imageView2" />
 
-    <CheckBox
-        android:id="@+id/uniformSize"
+    <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView4"
-        android:layout_marginTop="106dp"
-        android:text="Uniform size and mass" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_below="@+id/gravConstant"
-        android:layout_marginTop="17dp"
-        android:text="Adjust mass and size"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/mass" />
 
     <SeekBar
         android:id="@+id/massSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/gravConstant"
-        android:layout_below="@+id/textView4"
-        android:layout_marginTop="46dp" />
+        android:layout_centerVertical="true" />
 
-    <TextView
-        android:id="@+id/textView6"
+    <CheckBox
+        android:id="@+id/uniformSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView5"
-        android:layout_alignBottom="@+id/textView5"
-        android:layout_alignLeft="@+id/textView3"
-        android:text="10"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/text_color" />
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/massSize"
+        android:layout_marginTop="22dp"
+        android:text=" " />
 
     <CheckBox
         android:id="@+id/uniformColor"
@@ -76,29 +65,24 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/uniformSize"
-        android:text="Random monochrome" />
+        android:text=" " />
 
-    <TextView
-        android:id="@+id/textView5"
+    <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView4"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="26dp"
-        android:text="1"
-        android:textAppearance="?android:attr/textAppearanceSmall" 
-        android:textColor="@color/text_color" />
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/imageView1"
+        android:src="@drawable/ucg" />
 
-    <TextView
-        android:id="@+id/textView2"
+    <ImageButton
+        android:id="@+id/enterSimul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="25dp"
-        android:text="Slow"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/text_color" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp"
+        android:src="@drawable/enter_simulation2"
+        android:background="@android:color/transparent" />
 
 </RelativeLayout>

@@ -69,14 +69,7 @@ public class OpenGL extends Activity {
 			MyGLRenderer.togglePaused();
 			//R.id.pause.setText("derp");
 			break;
-		case R.id.back_main:
-			MyGLRenderer.clear();
-			startActivity(new Intent(this, MainActivity.class));
-			break;
-		case R.id.settings:
-			startActivity(new Intent(this, Settings.class));
-			break;
-		case R.id.randColor:
+		case R.id.newColor:
 			if(globalVar.uniformColor){
 			globalVar.colorRed = (rand.nextFloat());
 			globalVar.colorGreen = (rand.nextFloat());
@@ -87,6 +80,13 @@ public class OpenGL extends Activity {
 				// Ali please do a Toast here
 				// Maybe move it to the Settings page
 			}
+			break;
+		case R.id.settingsPage:
+			startActivity(new Intent(this, Settings.class));
+			break;
+		case R.id.endSimul:
+			MyGLRenderer.clear();
+			startActivity(new Intent(this, MainActivity.class));
 			break;
 		default:
 			return super.onOptionsItemSelected(item);

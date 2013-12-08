@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Toast;
@@ -25,9 +26,11 @@ import com.arshajii.nbody.backend.Const;
 
 public class Settings extends Activity{
 	Random rand = new Random();
+	
 	SeekBar gravConstant;
 	SeekBar massSize;
 	CheckBox uniformSize, uniformColor;
+	ImageButton enterSimul;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,7 @@ public class Settings extends Activity{
 		massSize = (SeekBar) findViewById(R.id.massSize);
 		uniformSize = (CheckBox) findViewById(R.id.uniformSize);
 		uniformColor = (CheckBox) findViewById(R.id.uniformColor);
+		enterSimul = (ImageButton) findViewById(R.id.enterSimul);
 		
 		if(Const.G == 6.67384E-11)
 		{
@@ -118,6 +122,7 @@ public class Settings extends Activity{
 				else if(progress >= 80 && progress <= 100){
 					Const.G = 6.67384E-7;
 				}
+				
 			}
 	
 			@Override
@@ -129,7 +134,7 @@ public class Settings extends Activity{
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				// TODO Auto-generated method stub
-				
+				Toast.makeText(getApplicationContext(),"Gravity Constant set to "+String.valueOf(Const.G), (Toast.LENGTH_SHORT)/2).show();
 			}
 		});
 		
@@ -180,7 +185,7 @@ public class Settings extends Activity{
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				// TODO Auto-generated method stub
-				
+				Toast.makeText(getApplicationContext(),"Mass size set to "+String.valueOf(MyGLSurfaceView.size), (Toast.LENGTH_SHORT)/2).show();
 			}
 		});
 		
