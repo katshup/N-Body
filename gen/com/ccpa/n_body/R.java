@@ -37,18 +37,19 @@ public final class R {
         public static final int mass_background=0x7f020009;
         public static final int menu_screen=0x7f02000a;
         public static final int new_setting2=0x7f02000b;
-        public static final int next=0x7f02000c;
-        public static final int orbit=0x7f02000d;
-        public static final int reset=0x7f02000e;
-        public static final int setting=0x7f02000f;
-        public static final int setting_background=0x7f020010;
-        public static final int tutorial_button=0x7f020011;
-        public static final int ucg=0x7f020012;
-        public static final int ucg_background=0x7f020013;
-        public static final int uniform_background=0x7f020014;
-        public static final int uniform_color=0x7f020015;
-        public static final int uniform_size=0x7f020016;
-        public static final int welcome_screen=0x7f020017;
+        public static final int new_settings2=0x7f02000c;
+        public static final int next=0x7f02000d;
+        public static final int orbit=0x7f02000e;
+        public static final int reset=0x7f02000f;
+        public static final int setting=0x7f020010;
+        public static final int setting_background=0x7f020011;
+        public static final int tutorial_button=0x7f020012;
+        public static final int ucg=0x7f020013;
+        public static final int ucg_background=0x7f020014;
+        public static final int uniform_background=0x7f020015;
+        public static final int uniform_color=0x7f020016;
+        public static final int uniform_size=0x7f020017;
+        public static final int welcome_screen=0x7f020018;
     }
     public static final class id {
         public static final int AbsoluteLayout1=0x7f09000a;

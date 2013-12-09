@@ -82,7 +82,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="7dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/new_setting2" />
+        android:src="@drawable/new_settings2" />
 
     <ImageButton
         android:id="@+id/about"
