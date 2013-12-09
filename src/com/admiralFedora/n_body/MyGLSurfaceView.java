@@ -68,44 +68,6 @@ public class MyGLSurfaceView extends GLSurfaceView {
 		return this.gestureDetector.onTouchEvent(e);
 	}
 
-	/*
-	 * @Override public boolean onDoubleTap(MotionEvent e) {
-	 * MyGLRenderer.togglePaused(); return true; }
-	 * 
-	 * @Override public boolean onDoubleTapEvent(MotionEvent e) { return true; }
-	 * 
-	 * @Override public boolean onSingleTapConfirmed(MotionEvent e) {
-	 * MyGLRenderer.addCircle(e.getX(), e.getY());
-	 * 
-	 * Log.d("Tap", "onSingleTapConfirmed");
-	 * 
-	 * return true; }
-	 * 
-	 * @Override public boolean onDown(MotionEvent e) { Log.d("Tap", "onDown");
-	 * return true; }
-	 * 
-	 * @Override public boolean onFling(MotionEvent e1, MotionEvent e2, float
-	 * velocityX, float velocityY) {
-	 * 
-	 * Log.d("Tap", "onFling");
-	 * 
-	 * MyGLRenderer.addCircle(e1.getX(), e1.getY(), velocityX / VSCALE,
-	 * velocityY / VSCALE);
-	 * 
-	 * return true; }
-	 * 
-	 * @Override public void onLongPress(MotionEvent e) { Log.d("Tap",
-	 * "onLongPress"); }
-	 * 
-	 * @Override public boolean onScroll(MotionEvent e1, MotionEvent e2, float
-	 * distanceX, float distanceY) { // TODO Auto-generated method stub return
-	 * false; }
-	 * 
-	 * @Override public void onShowPress(MotionEvent e) { // TODO Auto-generated
-	 * method stub }
-	 * 
-	 * @Override public boolean onSingleTapUp(MotionEvent e) { return true;
-	 */
 
 	private class GestureListener implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
 		private MyGLSurfaceView view;
