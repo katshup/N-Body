@@ -78,6 +78,10 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 	public static void addCircle(float xPos, float yPos, float SCALE, float R, float G, float B) {
 		bodies.add(new BodyRendering(universe, xPos, yPos, SCALE, R, G, B));
 	}
+	
+	public static void addCircle(float xPos, float yPos, float xVel, float yVel, float SCALE, float R, float G, float B) {
+		bodies.add(new BodyRendering(universe, xPos, yPos, xVel, yVel, SCALE, R, G, B));
+	}
 
 	/*public static void addCircle(float xPos, float yPos) {
 		addCircle(xPos, yPos, 0, 0);

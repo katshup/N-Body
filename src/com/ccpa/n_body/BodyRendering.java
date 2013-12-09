@@ -19,6 +19,13 @@ public class BodyRendering {
 		universe.addBody(data);
 		image = new Circle((float) data.getPos().getX(), (float) data.getPos().getY(), SCALE, R, G, B); 
 	}
+	
+	public BodyRendering(Universe universe, double x, double y, float xVel, float yVel, float SCALE, float R, float G, float B)
+	{ 
+		data = new Body(new Vec(x, y), new Vec(xVel, yVel), SCALE*100); 
+		universe.addBody(data);
+		image = new Circle((float) data.getPos().getX(), (float) data.getPos().getY(), SCALE, R, G, B); 
+	}
 
 	/*public BodyRendering(Universe universe, double xPos, double yPos,
 			double xVel, double yVel) {

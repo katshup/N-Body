@@ -34,6 +34,7 @@ public class MyGLSurfaceView extends GLSurfaceView {
 	Random n = new Random();
 	// the user picks the size. defaults to 10
 	public static int size = 10;
+	private static final float VSCALE = 2E8f;
 
 	GestureDetector gestureDetector;
 	Context context;
@@ -56,13 +57,14 @@ public class MyGLSurfaceView extends GLSurfaceView {
 		setRenderer(new MyGLRenderer());
 		setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
 
-		gestureDetector = new GestureDetector(context, new GestureListener());
+		gestureDetector = new GestureDetector(context, new GestureListener(this));
 		// gestureDetector.setOnDoubleTapListener(this);
 	}
 
 	/* touch events */
 	@Override
 	public boolean onTouchEvent(MotionEvent e) {
+		//Log.d("OnTouchEvent","touch");
 		return this.gestureDetector.onTouchEvent(e);
 	}
 
@@ -105,25 +107,104 @@ public class MyGLSurfaceView extends GLSurfaceView {
 	 * @Override public boolean onSingleTapUp(MotionEvent e) { return true;
 	 */
 
-	private class GestureListener extends
-			GestureDetector.SimpleOnGestureListener {
-		public GestureListener() {
+	private class GestureListener implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
+		private MyGLSurfaceView view;
+
+		public GestureListener(MyGLSurfaceView view) {
 			// TODO Auto-generated constructor stub
+			this.view = view;
 		}
 
 		@Override
 		public void onLongPress(MotionEvent e) {
+			
+			// return true; }
+		}
+		@Override
+		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+			Log.d("OnFling",String.valueOf(velocityX));
+			if(!globalVar.uniformSize){
+				if(!globalVar.uniformColor){
+					//                                                                                      SCALE                           Red                 Green               Blue
+					MyGLRenderer.addCircle(e1.getX(), e1.getY(), velocityX / VSCALE, velocityY / VSCALE, ((n.nextFloat() * size) + 3), ((n.nextFloat())), ((n.nextFloat())), ((n.nextFloat())));
+					//Log.d("Circle", e.getX() + ", " + e.getY());
+					requestRender();
+				}
+				else
+				{
+					MyGLRenderer.addCircle(e1.getX(), e1.getY(), velocityX / VSCALE, velocityY / VSCALE, ((n.nextFloat() * size) + 3), globalVar.colorRed, globalVar.colorGreen, globalVar.colorBlue);
+					//Log.d("Circle", e.getX() + ", " + e.getY());
+					requestRender();
+				}
+			}
+			else
+			{
+				if(!globalVar.uniformColor){
+					MyGLRenderer.addCircle(e1.getX(), e1.getY(), velocityX / VSCALE, velocityY / VSCALE, size+3, ((n.nextFloat())), ((n.nextFloat())), ((n.nextFloat())));
+					//Log.d("Circle", e.getX() + ", " + e.getY());
+					requestRender();
+				}
+				else
+				{
+					MyGLRenderer.addCircle(e1.getX(), e1.getY(), velocityX / VSCALE, velocityY / VSCALE, size+3, globalVar.colorRed, globalVar.colorGreen, globalVar.colorBlue);
+					//Log.d("Circle", e.getX() + ", " + e.getY());
+					requestRender();
+				}
+			}
+			return true; 
+		}
+
+		@Override
+		public boolean onDown(MotionEvent e) {
+			// TODO Auto-generated method stub
+			return true;
+		}
+
+		@Override
+		public boolean onScroll(MotionEvent e1, MotionEvent e2,
+				float distanceX, float distanceY) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public void onShowPress(MotionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public boolean onSingleTapUp(MotionEvent e) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean onDoubleTap(MotionEvent e) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean onDoubleTapEvent(MotionEvent e) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean onSingleTapConfirmed(MotionEvent e) {
+			// TODO Auto-generated method stub
 			if(!globalVar.uniformSize){
 				if(!globalVar.uniformColor){
 					//                                             SCALE                           Red                 Green               Blue
 					MyGLRenderer.addCircle(e.getX(), e.getY(), ((n.nextFloat() * size) + 3), ((n.nextFloat())), ((n.nextFloat())), ((n.nextFloat())));
-					Log.d("Circle", e.getX() + ", " + e.getY());
+					//Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				}
 				else
 				{
 					MyGLRenderer.addCircle(e.getX(), e.getY(), ((n.nextFloat() * size) + 3), globalVar.colorRed, globalVar.colorGreen, globalVar.colorBlue);
-					Log.d("Circle", e.getX() + ", " + e.getY());
+					//Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				}
 			}
@@ -131,18 +212,17 @@ public class MyGLSurfaceView extends GLSurfaceView {
 			{
 				if(!globalVar.uniformColor){
 					MyGLRenderer.addCircle(e.getX(), e.getY(), size+3, ((n.nextFloat())), ((n.nextFloat())), ((n.nextFloat())));
-					Log.d("Circle", e.getX() + ", " + e.getY());
+					//Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				}
 				else
 				{
 					MyGLRenderer.addCircle(e.getX(), e.getY(), size+3, globalVar.colorRed, globalVar.colorGreen, globalVar.colorBlue);
-					Log.d("Circle", e.getX() + ", " + e.getY());
+					//Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				}
 			}
-		
-			// return true; }
+			return true;
 		}
 	}
 }
