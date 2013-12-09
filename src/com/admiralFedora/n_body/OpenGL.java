@@ -105,7 +105,7 @@ public class OpenGL extends Activity {
 			break;
 		case R.id.newColor:
 			if(globalVar.uniformColor){
-				Toast.makeText(getApplicationContext(),"Generating a new color scheme", (Toast.LENGTH_SHORT)/10).show();
+				Toast.makeText(getApplicationContext(),"New Color Generated", (Toast.LENGTH_SHORT)/10).show();
 			globalVar.colorRed = (rand.nextFloat());
 			globalVar.colorGreen = (rand.nextFloat());
 			globalVar.colorBlue = (rand.nextFloat());
@@ -123,7 +123,7 @@ public class OpenGL extends Activity {
 			startActivity(intent);
 			break;
 		case R.id.endSimul:
-			Toast.makeText(getApplicationContext(),"Ending your simulation", (Toast.LENGTH_SHORT)/10).show();
+			Toast.makeText(getApplicationContext(),"Ending Simulation", (Toast.LENGTH_SHORT)/10).show();
 			MyGLRenderer.clear();
 			Intent intent2 = new Intent(this,MainActivity.class);
 			intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
