@@ -30,7 +30,7 @@ public class BodyRendering {
 	
 	public BodyRendering(Universe universe, double x, double y, float SCALE, float R, float G, float B, boolean isStatic)
 	{ 
-		data = new StaticBody(new Vec(x, y), SCALE*100); 
+		data = new StaticBody(new Vec(x, y), SCALE*200); 
 		universe.addBody(data);
 		image = new Circle((float) data.getPos().getX(), (float) data.getPos().getY(), SCALE, R, G, B); 
 	}
