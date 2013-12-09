@@ -52,7 +52,7 @@ public class MyGLSurfaceView extends GLSurfaceView {
 
 		// Tell EGL to use a ES 1.0 Context
 		setEGLContextClientVersion(1);
-		setEGLConfigChooser(new MultisampleConfigChooser());
+		//setEGLConfigChooser(new MultisampleConfigChooser());
 
 		setRenderer(new MyGLRenderer());
 		setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
