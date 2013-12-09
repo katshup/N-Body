@@ -5,13 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageButton;
 
 public class MainActivity extends Activity {
 
 	ImageButton nextButton;
 	ImageButton settingsButton;
+	ImageButton aboutButton;
+	ImageButton tutorialButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,8 @@ public class MainActivity extends Activity {
 
 		nextButton = (ImageButton) findViewById(R.id.start);
 		settingsButton = (ImageButton) findViewById(R.id.settings);
+		aboutButton = (ImageButton) findViewById(R.id.about);
+		tutorialButton = (ImageButton)findViewById(R.id.tutorial);
 		
 		nextButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -37,11 +40,28 @@ public class MainActivity extends Activity {
 			}
 		});
 		
+		tutorialButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				Intent goToNextActivity = new Intent(arg0.getContext(),
+						Tutorial.class);
+				startActivity(goToNextActivity);
+			}
+		});
+		
 		settingsButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				Intent goToNextActivity = new Intent(arg0.getContext(),
 						Settings.class);
+				startActivity(goToNextActivity);
+			}
+		});
+		aboutButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				Intent goToNextActivity = new Intent(arg0.getContext(),
+						About.class);
 				startActivity(goToNextActivity);
 			}
 		});

@@ -36,7 +36,9 @@
             android:name="com.ccpa.n_body.CompassMode"
             android:label="@string/title_activity_compass__mode" >
         </activity>
+        <activity android:name="com.ccpa.n_body.Tutorial"></activity>
         <activity android:name="com.ccpa.n_body.Settings"></activity>
+        <activity android:name="com.ccpa.n_body.About"></activity>
     </application>
 
 </manifest>
