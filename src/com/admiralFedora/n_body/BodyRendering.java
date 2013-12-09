@@ -3,6 +3,7 @@ package com.admiralFedora.n_body;
 import javax.microedition.khronos.opengles.GL10;
 
 import com.arshajii.nbody.backend.Body;
+import com.arshajii.nbody.backend.StaticBody;
 import com.arshajii.nbody.backend.Universe;
 import com.arshajii.nbody.backend.Vec;
 
@@ -26,6 +27,14 @@ public class BodyRendering {
 		universe.addBody(data);
 		image = new Circle((float) data.getPos().getX(), (float) data.getPos().getY(), SCALE, R, G, B); 
 	}
+	
+	public BodyRendering(Universe universe, double x, double y, float SCALE, float R, float G, float B, boolean isStatic)
+	{ 
+		data = new StaticBody(new Vec(x, y), SCALE*100); 
+		universe.addBody(data);
+		image = new Circle((float) data.getPos().getX(), (float) data.getPos().getY(), SCALE, R, G, B); 
+	}
+	
 
 	/*public BodyRendering(Universe universe, double xPos, double yPos,
 			double xVel, double yVel) {
