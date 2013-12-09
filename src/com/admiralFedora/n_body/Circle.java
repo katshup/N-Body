@@ -1,4 +1,4 @@
-package com.ccpa.n_body;
+package com.admiralFedora.n_body;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

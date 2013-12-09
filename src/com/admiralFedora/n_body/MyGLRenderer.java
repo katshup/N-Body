@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.ccpa.n_body;
+package com.admiralFedora.n_body;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,7 +35,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 
 	private static final Universe universe = new Universe();
 
-	private static boolean paused = false;
+	public static boolean paused = false;
 
 	/* Called once to set up the view's OpenGL ES environment. */
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {

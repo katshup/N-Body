@@ -18,9 +18,9 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" >
+        android:label="@string/app_name">
         <activity
-            android:name="com.ccpa.n_body.MainActivity"
+            android:name="com.admiralFedora.n_body.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,16 +29,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ccpa.n_body.OpenGL"
+            android:name="com.admiralFedora.n_body.OpenGL"
             android:label="@string/title_activity_open_gl" >
         </activity>
         <activity
-            android:name="com.ccpa.n_body.CompassMode"
+            android:name="com.admiralFedora.n_body.CompassMode"
             android:label="@string/title_activity_compass__mode" >
         </activity>
-        <activity android:name="com.ccpa.n_body.Tutorial"></activity>
-        <activity android:name="com.ccpa.n_body.Settings"></activity>
-        <activity android:name="com.ccpa.n_body.About"></activity>
+        <activity android:name="com.admiralFedora.n_body.Tutorial"></activity>
+        <activity android:name="com.admiralFedora.n_body.Settings"></activity>
+        <activity android:name="com.admiralFedora.n_body.About"></activity>
     </application>
 
 </manifest>

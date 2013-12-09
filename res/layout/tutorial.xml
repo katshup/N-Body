@@ -7,25 +7,25 @@
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/setting" />
+        android:src="@drawable/tutorial" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="16dp"
-        android:text="When you&apos;re ready, enter the simulation and create a body anywhere by pressing the screen for a few seconds."
+        android:text="When you&apos;re ready, enter the simulation and create a body anywhere by pressing the screen. Fling to create a body with velocity!"
         android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/textView2"
         android:layout_marginTop="20dp"
         android:text="Make your second body the same way and watch them revolve around each other!"
@@ -45,7 +45,7 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/imageView1"
         android:text="The N-Body Simulator is simple."
         android:textSize="16sp" />

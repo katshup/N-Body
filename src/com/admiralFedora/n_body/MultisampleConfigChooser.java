@@ -1,4 +1,4 @@
-package com.ccpa.n_body;
+package com.admiralFedora.n_body;
 
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;

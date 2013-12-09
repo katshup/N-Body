@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.ccpa.n_body;
+package com.admiralFedora.n_body;
 
 import java.util.Random;
 

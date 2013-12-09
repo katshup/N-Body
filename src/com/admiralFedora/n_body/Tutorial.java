@@ -1,4 +1,6 @@
-package com.ccpa.n_body;
+package com.admiralFedora.n_body;
+
+import com.ccpa.n_body.R;
 
 import android.app.Activity;
 import android.content.Intent;

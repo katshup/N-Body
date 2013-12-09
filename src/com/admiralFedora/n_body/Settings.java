@@ -1,10 +1,13 @@
-package com.ccpa.n_body;
+package com.admiralFedora.n_body;
 
 import java.util.Random;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -17,6 +20,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Toast;
 
 import com.arshajii.nbody.backend.Const;
+import com.ccpa.n_body.R;
 
 public class Settings extends Activity{
 	Random rand = new Random();
@@ -25,15 +29,48 @@ public class Settings extends Activity{
 	SeekBar massSize;
 	CheckBox uniformSize, uniformColor;
 	ImageButton enterSimul, reset;
+	// this will let us keep track of where we came from
+	String activity;
+	// have this variable prevents us from getting stuck in a screen loop
+	boolean comeFromGL = false;
+	
+	@Override
+	public void onBackPressed(){
+		// we need to force the menu in OpenGL to be created again when we leave settings
+		if(activity.equals("OpenGL") && !comeFromGL)
+		{
+			comeFromGL = true;
+			Intent intent = new Intent(getApplicationContext(),OpenGL.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+		}
+		else
+		{
+			super.onBackPressed();
+		}
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()){
+		case android.R.id.home:
+			onBackPressed();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
+			Intent intent = getIntent();
+			activity = intent.getStringExtra("activity");
+		//requestWindowFeature(Window.FEATURE_NO_TITLE);
 		
-		// This toggles full screen
-		/*getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,   
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);  */
+			ActionBar actionbar = getActionBar();
+			actionbar.setTitle(" ");
+			actionbar.setDisplayHomeAsUpEnabled(true);
 		
 		setContentView(R.layout.settings);
 
@@ -238,6 +275,7 @@ public class Settings extends Activity{
 			}
 			
 		});
+		
 	}
 }
 

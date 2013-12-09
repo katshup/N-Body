@@ -13,9 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.ccpa.n_body;
+package com.admiralFedora.n_body;
 
 import java.util.Random;
+
+import com.ccpa.n_body.R;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -60,6 +62,16 @@ public class OpenGL extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main, menu);
+		MenuItem newColor = menu.getItem(2);
+		// we can hide the new color option based on what the user has selected in the settings
+		if(globalVar.uniformColor)
+		{
+			newColor.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		}
+		else
+		{
+			newColor.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+		}
 		return true;
 	}
 
@@ -74,6 +86,15 @@ public class OpenGL extends Activity {
 			break;
 		case R.id.pause:
 			MyGLRenderer.togglePaused();
+			// dynamically changing the icons
+			if(MyGLRenderer.paused)
+			{
+				item.setIcon(R.drawable.play_ico);
+			}
+			else
+			{
+				item.setIcon(R.drawable.pause_ico);
+			}
 			//R.id.pause.setText("derp");
 			break;
 		case R.id.newColor:
@@ -91,6 +112,7 @@ public class OpenGL extends Activity {
 		case R.id.settingsPage:
 			Intent intent = new Intent(this,Settings.class);
 			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.putExtra("activity", "OpenGL");
 			startActivity(intent);
 			break;
 		case R.id.endSimul:
@@ -105,5 +127,6 @@ public class OpenGL extends Activity {
 
 		return true;
 	}
+	
 
 }
