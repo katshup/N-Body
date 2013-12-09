@@ -82,13 +82,13 @@ public class MyGLSurfaceView extends GLSurfaceView {
 			if(!globalVar.uniformSize){
 				if(!globalVar.uniformColor){
 					//                                        SCALE        Red                 Green               Blue
-					MyGLRenderer.addCircle(e.getX(), e.getY(), size+10, ((n.nextFloat()))*2, ((n.nextFloat()))/4, ((n.nextFloat()))/4, true);
+					MyGLRenderer.addCircle(e.getX(), e.getY(), size+(((n.nextFloat()))*10), ((n.nextFloat()))*2, ((n.nextFloat()))/4, ((n.nextFloat()))/4, true);
 					//Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				}
 				else
 				{
-					MyGLRenderer.addCircle(e.getX(), e.getY(), size+10, globalVar.colorRed*2, globalVar.colorGreen/4, globalVar.colorBlue/4, true);
+					MyGLRenderer.addCircle(e.getX(), e.getY(), size+(((n.nextFloat()))*10), globalVar.colorRed*2, globalVar.colorGreen/4, globalVar.colorBlue/4, true);
 					//Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				}
@@ -96,13 +96,13 @@ public class MyGLSurfaceView extends GLSurfaceView {
 			else
 			{
 				if(!globalVar.uniformColor){
-					MyGLRenderer.addCircle(e.getX(), e.getY(),size+10, ((n.nextFloat()))*2, ((n.nextFloat()))/4, ((n.nextFloat()))/4, true);
+					MyGLRenderer.addCircle(e.getX(), e.getY(),size+(((n.nextFloat()))*10), ((n.nextFloat()))*2, ((n.nextFloat()))/4, ((n.nextFloat()))/4, true);
 					//Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				}
 				else
 				{
-					MyGLRenderer.addCircle(e.getX(), e.getY(), size+10, globalVar.colorRed*2, globalVar.colorGreen/4, globalVar.colorBlue/4, true);
+					MyGLRenderer.addCircle(e.getX(), e.getY(), size+(((n.nextFloat()))*10), globalVar.colorRed*2, globalVar.colorGreen/4, globalVar.colorBlue/4, true);
 					//Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				}
