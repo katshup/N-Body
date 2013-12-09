@@ -27,6 +27,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class OpenGL extends Activity {
 
@@ -84,6 +85,7 @@ public class OpenGL extends Activity {
 			onBackPressed();
 			break;
 		case R.id.clear:
+			Toast.makeText(getApplicationContext(),"Clearing Screen", (Toast.LENGTH_SHORT)/10).show();
 			MyGLRenderer.clear();
 			break;
 		case R.id.pause:
@@ -92,15 +94,18 @@ public class OpenGL extends Activity {
 			if(MyGLRenderer.paused)
 			{
 				item.setIcon(R.drawable.play_ico);
+				Toast.makeText(getApplicationContext(),"Pausing", (Toast.LENGTH_SHORT)/10).show();
 			}
 			else
 			{
 				item.setIcon(R.drawable.pause_ico);
+				Toast.makeText(getApplicationContext(),"Resuming", (Toast.LENGTH_SHORT)/10).show();
 			}
 			//R.id.pause.setText("derp");
 			break;
 		case R.id.newColor:
 			if(globalVar.uniformColor){
+				Toast.makeText(getApplicationContext(),"Generating a new color scheme", (Toast.LENGTH_SHORT)/10).show();
 			globalVar.colorRed = (rand.nextFloat());
 			globalVar.colorGreen = (rand.nextFloat());
 			globalVar.colorBlue = (rand.nextFloat());
@@ -118,6 +123,7 @@ public class OpenGL extends Activity {
 			startActivity(intent);
 			break;
 		case R.id.endSimul:
+			Toast.makeText(getApplicationContext(),"Ending your simulation", (Toast.LENGTH_SHORT)/10).show();
 			MyGLRenderer.clear();
 			Intent intent2 = new Intent(this,MainActivity.class);
 			intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
