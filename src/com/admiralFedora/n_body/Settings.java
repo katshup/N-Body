@@ -28,7 +28,7 @@ public class Settings extends Activity{
 	SeekBar gravConstant;
 	SeekBar massSize;
 	CheckBox uniformSize, uniformColor;
-	ImageButton enterSimul, reset;
+	ImageButton enterSimul, reset, colorSchemeButt, uniSizeButt;
 	// this will let us keep track of where we came from
 	String activity;
 	// have this variable prevents us from getting stuck in a screen loop
@@ -80,6 +80,8 @@ public class Settings extends Activity{
 		uniformColor = (CheckBox) findViewById(R.id.uniformColor);
 		enterSimul = (ImageButton) findViewById(R.id.enterSimul);
 		reset = (ImageButton) findViewById(R.id.reset);
+		colorSchemeButt = (ImageButton) findViewById(R.id.colorSchemeButt);
+		uniSizeButt = (ImageButton) findViewById(R.id.uniSizeButt);
 		
 		if(Const.G == 6.67384E-11)
 		{
@@ -270,12 +272,39 @@ public class Settings extends Activity{
 				uniformSize.setChecked(globalVar.uniformSize);
 				uniformColor.setChecked(globalVar.uniformColor);
 				gravConstant.setProgress(100);
-				massSize.setProgress(25);
+				massSize.setProgress(15);
 				Toast.makeText(getApplicationContext(),"The settings have been reverted back to default.", (Toast.LENGTH_SHORT)/2).show();
 			}
 			
 		});
 		
+		colorSchemeButt.setOnClickListener( new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				if(globalVar.uniformColor){
+					uniformColor.setChecked(false);
+				}
+				else
+				{
+					uniformColor.setChecked(true);
+				}
+				
+			}
+		});
+		
+		uniSizeButt.setOnClickListener( new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				if(globalVar.uniformSize){
+					uniformSize.setChecked(false);
+				}
+				else
+				{
+					uniformSize.setChecked(true);
+				}
+				
+			}
+		});
 	}
 }
 

@@ -67,10 +67,12 @@ public class OpenGL extends Activity {
 		if(globalVar.uniformColor)
 		{
 			newColor.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+			newColor.setVisible(true);
 		}
 		else
 		{
 			newColor.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+			newColor.setVisible(false);
 		}
 		return true;
 	}

@@ -21,7 +21,8 @@
         android:label="@string/app_name">
         <activity
             android:name="com.admiralFedora.n_body.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,15 +31,19 @@
         </activity>
         <activity
             android:name="com.admiralFedora.n_body.OpenGL"
-            android:label="@string/title_activity_open_gl" >
+            android:label="@string/title_activity_open_gl" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.admiralFedora.n_body.CompassMode"
             android:label="@string/title_activity_compass__mode" >
         </activity>
-        <activity android:name="com.admiralFedora.n_body.Tutorial"></activity>
-        <activity android:name="com.admiralFedora.n_body.Settings"></activity>
-        <activity android:name="com.admiralFedora.n_body.About"></activity>
+        <activity android:name="com.admiralFedora.n_body.Tutorial"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name="com.admiralFedora.n_body.Settings"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name="com.admiralFedora.n_body.About"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

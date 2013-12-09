@@ -12,13 +12,14 @@
         android:layout_centerHorizontal="true"
         android:src="@drawable/setting" />
 
-    <ImageView
-        android:id="@+id/imageView5"
+    <ImageButton
+        android:id="@+id/colorSchemeButt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/uniformColor"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/uniform_color" />
+        android:src="@drawable/uniform_color"
+        android:background="@android:color/transparent" />
 
     <SeekBar
         android:id="@+id/gravConstant"
@@ -69,20 +70,21 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/imageView3" />
 
-    <ImageView
-        android:id="@+id/imageView4"
+    <ImageButton
+        android:id="@+id/uniSizeButt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/massSize"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/uniform_size" />
+        android:src="@drawable/uniform_size"
+        android:background="@android:color/transparent" />
 
     <CheckBox
         android:id="@+id/uniformSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/imageView4"
+        android:layout_alignTop="@+id/uniSizeButt"
         android:text=" " />
 
     <ImageButton
@@ -90,8 +92,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/enterSimul"
-        android:layout_below="@+id/imageView5"
-        android:layout_marginTop="16dp"
+        android:layout_below="@+id/colorSchemeButt"
+        android:layout_marginTop="14dp"
         android:background="@android:color/transparent"
         android:src="@drawable/reset" />
 

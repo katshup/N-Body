@@ -67,6 +67,7 @@ public final class R {
         public static final int body_opt_size=0x7f090005;
         public static final int button1=0x7f090008;
         public static final int clear=0x7f09001c;
+        public static final int colorSchemeButt=0x7f090011;
         public static final int copyright=0x7f090004;
         public static final int endSimul=0x7f090020;
         public static final int enterSimul=0x7f090016;
@@ -74,8 +75,6 @@ public final class R {
         public static final int imageView1=0x7f090000;
         public static final int imageView2=0x7f090014;
         public static final int imageView3=0x7f090017;
-        public static final int imageView4=0x7f090019;
-        public static final int imageView5=0x7f090011;
         public static final int massSize=0x7f090018;
         public static final int myGLSurfaceView1=0x7f090010;
         public static final int newColor=0x7f09001e;
@@ -89,6 +88,7 @@ public final class R {
         public static final int textView2=0x7f09000a;
         public static final int textView3=0x7f09001b;
         public static final int tutorial=0x7f09000d;
+        public static final int uniSizeButt=0x7f090019;
         public static final int uniformColor=0x7f090012;
         public static final int uniformSize=0x7f090015;
     }
