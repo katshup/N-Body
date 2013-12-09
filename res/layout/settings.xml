@@ -89,9 +89,9 @@
         android:id="@+id/reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/enterSimul"
         android:layout_alignLeft="@+id/enterSimul"
-        android:layout_marginBottom="26dp"
+        android:layout_below="@+id/imageView5"
+        android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
         android:src="@drawable/reset" />
 

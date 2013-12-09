@@ -53,6 +53,7 @@ public class OpenGL extends Activity {
 		 */
 		ActionBar actionbar = getActionBar();
 		actionbar.setTitle(" ");
+		actionbar.setDisplayHomeAsUpEnabled(true);
 	}
 
 	@Override
@@ -65,6 +66,9 @@ public class OpenGL extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
+		case android.R.id.home:
+			onBackPressed();
+			break;
 		case R.id.clear:
 			MyGLRenderer.clear();
 			break;
@@ -85,11 +89,15 @@ public class OpenGL extends Activity {
 			}
 			break;
 		case R.id.settingsPage:
-			startActivity(new Intent(this, Settings.class));
+			Intent intent = new Intent(this,Settings.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
 			break;
 		case R.id.endSimul:
 			MyGLRenderer.clear();
-			startActivity(new Intent(this, MainActivity.class));
+			Intent intent2 = new Intent(this,MainActivity.class);
+			intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent2);
 			break;
 		default:
 			return super.onOptionsItemSelected(item);

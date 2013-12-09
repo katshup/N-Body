@@ -214,9 +214,9 @@ public class Settings extends Activity{
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Intent goToNextActivity = new Intent(arg0.getContext(),
-						OpenGL.class);
-				startActivity(goToNextActivity);
+				Intent intent = new Intent(arg0.getContext(),OpenGL.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);
 			}
 			
 		});
