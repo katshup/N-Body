@@ -79,8 +79,34 @@ public class MyGLSurfaceView extends GLSurfaceView {
 
 		@Override
 		public void onLongPress(MotionEvent e) {
-			
-			// return true; }
+			if(!globalVar.uniformSize){
+				if(!globalVar.uniformColor){
+					//                                             SCALE                           Red                 Green               Blue
+					MyGLRenderer.addCircle(e.getX(), e.getY(), ((n.nextFloat() * size) + 3), ((n.nextFloat())), ((n.nextFloat())), ((n.nextFloat())));
+					//Log.d("Circle", e.getX() + ", " + e.getY());
+					requestRender();
+				}
+				else
+				{
+					MyGLRenderer.addCircle(e.getX(), e.getY(), ((n.nextFloat() * size) + 3), globalVar.colorRed, globalVar.colorGreen, globalVar.colorBlue);
+					//Log.d("Circle", e.getX() + ", " + e.getY());
+					requestRender();
+				}
+			}
+			else
+			{
+				if(!globalVar.uniformColor){
+					MyGLRenderer.addCircle(e.getX(), e.getY(), size+3, ((n.nextFloat())), ((n.nextFloat())), ((n.nextFloat())));
+					//Log.d("Circle", e.getX() + ", " + e.getY());
+					requestRender();
+				}
+				else
+				{
+					MyGLRenderer.addCircle(e.getX(), e.getY(), size+3, globalVar.colorRed, globalVar.colorGreen, globalVar.colorBlue);
+					//Log.d("Circle", e.getX() + ", " + e.getY());
+					requestRender();
+				}
+			}
 		}
 		@Override
 		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
