@@ -30,7 +30,7 @@ import com.arshajii.nbody.backend.Vec;
 
 public class MyGLRenderer implements GLSurfaceView.Renderer {
 
-	private static final List<BodyRendering> bodies = Collections
+	private static  List<BodyRendering> bodies = Collections
 			.synchronizedList(new ArrayList<BodyRendering>());
 
 	private static final Universe universe = new Universe();
@@ -95,8 +95,10 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 	}
 
 	public static void removeLast() {
-		if (!bodies.isEmpty())
+		if (!bodies.isEmpty()){
 			bodies.remove(bodies.size() - 1);
+			universe.removeBody();
+		}
 	}
 
 	public static void clear() {
@@ -107,5 +109,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 	public void moveAll(float x, float y) {
 		universe.moveAll(new Vec(x, y));
 	}
+	
+	
 
 }

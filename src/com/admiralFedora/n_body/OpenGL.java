@@ -17,6 +17,7 @@ package com.admiralFedora.n_body;
 
 import java.util.Random;
 
+import com.arshajii.nbody.backend.Universe;
 import com.ccpa.n_body.R;
 
 import android.app.ActionBar;
@@ -124,6 +125,8 @@ public class OpenGL extends Activity {
 			break;
 		case R.id.endSimul:
 			Toast.makeText(getApplicationContext(),"Ending Simulation", (Toast.LENGTH_SHORT)/10).show();
+			//MyGLRenderer.removeLast();
+			//MyGLRenderer.universe.removeBody();
 			MyGLRenderer.clear();
 			Intent intent2 = new Intent(this,MainActivity.class);
 			intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class Universe {
-	private final Collection<Body> bodies = Collections
+	private static Collection<Body> bodies = Collections
 			.synchronizedList(new ArrayList<Body>());
 
 	private int time = 0;
@@ -33,6 +33,10 @@ public class Universe {
 
 	public void addBody(Body body) {
 		bodies.add(body);
+	}
+	
+	public void removeBody() {
+		this.bodies.remove(this.bodies.size() - 1);
 	}
 
 	public void step() {

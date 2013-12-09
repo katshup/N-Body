@@ -50,5 +50,6 @@ public class BodyRendering {
 		image.setXY((float) data.getPos().getX(), (float) data.getPos().getY());
 		image.draw(gl);
 	}
+	
 
 }
