@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/imageView1"
-        android:text="Copyright (c) 2013 - Alireza Bagheri, Pete Benja, Carlos Cheung, Alex Cong Liu, Ariya Shajii"
+        android:text="Copyright (c) 2013 - Carlos Cheung, Ariya Shajii, Alireza Bagheri, Pete Benja, Alex Cong Liu"
         android:textSize="11sp" />
 
     <TextView
