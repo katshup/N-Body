@@ -17,6 +17,7 @@ package com.ccpa.n_body;
 
 import java.util.Random;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -50,6 +51,8 @@ public class OpenGL extends Activity {
 		 * 
 		 * startActivity(goToNextActivity); } });
 		 */
+		ActionBar actionbar = getActionBar();
+		actionbar.setTitle(" ");
 	}
 
 	@Override

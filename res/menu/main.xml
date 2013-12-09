@@ -1,12 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
         android:id="@+id/clear"
-        android:title="Clear"/>
+        android:title="Clear" android:showAsAction="always" android:icon="@drawable/clear_ico"/>
     <item
         android:id="@+id/pause"
-        android:title="Pause/Resume"/>
-    <item android:id="@+id/newColor" android:title="New Color"></item>
-    <item android:id="@+id/settingsPage" android:title="Settings"></item><item android:id="@+id/endSimul" android:title="End Simulation" />
+        android:title="Pause/Resume" android:showAsAction="always" android:icon="@drawable/pause_ico"/>
+    <item android:id="@+id/newColor" android:title="New Color" android:showAsAction="always" android:icon="@drawable/color_ico"></item>
+    <item android:id="@+id/settingsPage" android:title="Settings" android:showAsAction="always" android:icon="@drawable/settings_ico"></item><item android:id="@+id/endSimul" android:title="End Simulation" android:showAsAction="always" android:icon="@drawable/end_ico"/>
     
 
 </menu>
