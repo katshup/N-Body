@@ -39,10 +39,10 @@ public class OpenGL extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		//requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.open_gl_view);
-		//requestWindowFeature(Window.FEATURE_NO_TITLE);
+		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		/*
 		 * nextButton2 = (Button) findViewById(R.id.button1); // Create a
 		 * GLSurfaceView instance and set it // as the ContentView for this
@@ -65,16 +65,20 @@ public class OpenGL extends Activity {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main, menu);
 		MenuItem newColor = menu.getItem(2);
-		// we can hide the new color option based on what the user has selected in the settings
-		if(globalVar.uniformColor)
-		{
+		// we can hide the new color option based on what the user has selected
+		// in the settings
+		if (globalVar.uniformColor) {
 			newColor.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 			newColor.setVisible(true);
-		}
-		else
-		{
+		} else {
 			newColor.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
 			newColor.setVisible(false);
+		}
+		MenuItem item = menu.getItem(1);
+		if (MyGLRenderer.paused) {
+			item.setIcon(R.drawable.play_ico);
+		} else {
+			item.setIcon(R.drawable.pause_ico);
 		}
 		return true;
 	}
@@ -86,51 +90,59 @@ public class OpenGL extends Activity {
 			onBackPressed();
 			break;
 		case R.id.clear:
-			Toast.makeText(getApplicationContext(),"Clearing Screen", (Toast.LENGTH_SHORT)/10).show();
+			Toast.makeText(
+					getApplicationContext(),
+					MyGLRenderer.isEmpty() ? "Screen Already Clear"
+							: "Clearing Screen", (Toast.LENGTH_SHORT) / 10)
+					.show();
 			MyGLRenderer.clear();
 			break;
 		case R.id.pause:
 			MyGLRenderer.togglePaused();
 			// dynamically changing the icons
-			if(MyGLRenderer.paused)
-			{
+			if (MyGLRenderer.paused) {
 				item.setIcon(R.drawable.play_ico);
-				Toast.makeText(getApplicationContext(),"Pausing", (Toast.LENGTH_SHORT)/10).show();
-			}
-			else
-			{
+				Toast.makeText(getApplicationContext(), "Pausing",
+						(Toast.LENGTH_SHORT) / 10).show();
+			} else {
 				item.setIcon(R.drawable.pause_ico);
-				Toast.makeText(getApplicationContext(),"Resuming", (Toast.LENGTH_SHORT)/10).show();
+				Toast.makeText(getApplicationContext(), "Resuming",
+						(Toast.LENGTH_SHORT) / 10).show();
 			}
-			//R.id.pause.setText("derp");
+			// R.id.pause.setText("derp");
 			break;
 		case R.id.newColor:
-			if(globalVar.uniformColor){
-				Toast.makeText(getApplicationContext(),"New Color Generated", (Toast.LENGTH_SHORT)/10).show();
-			globalVar.colorRed = (rand.nextFloat());
-			globalVar.colorGreen = (rand.nextFloat());
-			globalVar.colorBlue = (rand.nextFloat());
-			}
-			else
-			{
+			if (globalVar.uniformColor) {
+				Toast.makeText(getApplicationContext(), "New Color Generated",
+						(Toast.LENGTH_SHORT) / 10).show();
+				globalVar.colorRed = (rand.nextFloat());
+				globalVar.colorGreen = (rand.nextFloat());
+				globalVar.colorBlue = (rand.nextFloat());
+			} else {
 				// Ali please do a Toast here
 				// Maybe move it to the Settings page
 			}
 			break;
 		case R.id.settingsPage:
-			Intent intent = new Intent(this,Settings.class);
+			Intent intent = new Intent(this, Settings.class);
 			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			intent.putExtra("activity", "OpenGL");
 			startActivity(intent);
 			break;
 		case R.id.endSimul:
-			Toast.makeText(getApplicationContext(),"Ending Simulation", (Toast.LENGTH_SHORT)/10).show();
-			//MyGLRenderer.removeLast();
-			//MyGLRenderer.universe.removeBody();
-			MyGLRenderer.clear();
-			Intent intent2 = new Intent(this,MainActivity.class);
-			intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			startActivity(intent2);
+			Toast.makeText(
+					getApplicationContext(),
+					MyGLRenderer.isEmpty() ? "No Bodies to Delete"
+							: "Deleting Last Body", (Toast.LENGTH_SHORT) / 10)
+					.show();
+			MyGLRenderer.removeLast();
+			// MyGLRenderer.universe.removeBody();
+			// MyGLRenderer.clear();
+			/*
+			 * Intent intent2 = new Intent(this,MainActivity.class);
+			 * intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			 * startActivity(intent2);
+			 */
 			break;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -138,6 +150,5 @@ public class OpenGL extends Activity {
 
 		return true;
 	}
-	
 
 }

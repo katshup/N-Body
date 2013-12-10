@@ -6,9 +6,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
+
+import android.util.Log;
 
 public class Universe {
-	private static Collection<Body> bodies = Collections
+	private final List<Body> bodies = Collections
 			.synchronizedList(new ArrayList<Body>());
 
 	private int time = 0;
@@ -36,7 +39,9 @@ public class Universe {
 	}
 	
 	public void removeBody() {
-		this.bodies.remove(this.bodies.size() - 1);
+		Log.d("attempt to remove",String.valueOf(this.bodies.size()));
+		bodies.remove(bodies.size() - 1);
+		Log.d("removed",String.valueOf(this.bodies.size()));
 	}
 
 	public void step() {

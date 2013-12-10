@@ -11,25 +11,13 @@
         android:layout_alignParentTop="true"
         android:src="@drawable/tutorial" />
 
-    <TextView
-        android:id="@+id/textView2"
+    <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView1"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="16dp"
-        android:text="When you&apos;re ready, enter the simulation and create a body anywhere by pressing the screen. Fling to create a body with velocity!"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="20dp"
-        android:text="Make your second body the same way and watch them revolve around each other!"
-        android:textSize="16sp" />
+        android:src="@drawable/tutorial_text" />
 
     <ImageButton
         android:id="@+id/enterSimul"
@@ -37,17 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="20dp"
         android:background="@android:color/transparent"
         android:src="@drawable/enter_simulation2" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/imageView1"
-        android:text="The N-Body Simulator is simple."
-        android:textSize="16sp" />
 
 </RelativeLayout>

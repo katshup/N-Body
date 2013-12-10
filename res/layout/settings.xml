@@ -70,15 +70,6 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/imageView3" />
 
-    <ImageButton
-        android:id="@+id/uniSizeButt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/massSize"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/uniform_size"
-        android:background="@android:color/transparent" />
-
     <CheckBox
         android:id="@+id/uniformSize"
         android:layout_width="wrap_content"
@@ -96,5 +87,14 @@
         android:layout_marginTop="14dp"
         android:background="@android:color/transparent"
         android:src="@drawable/reset" />
+
+    <ImageButton
+        android:id="@+id/uniSizeButt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/colorSchemeButt"
+        android:layout_below="@+id/massSize"
+        android:background="@android:color/transparent"
+        android:src="@drawable/uniform_size" />
 
 </RelativeLayout>

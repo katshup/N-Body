@@ -30,7 +30,7 @@ import com.arshajii.nbody.backend.Vec;
 
 public class MyGLRenderer implements GLSurfaceView.Renderer {
 
-	private static  List<BodyRendering> bodies = Collections
+	private static List<BodyRendering> bodies = Collections
 			.synchronizedList(new ArrayList<BodyRendering>());
 
 	private static final Universe universe = new Universe();
@@ -75,30 +75,38 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 		}
 	}
 
-	public static void addCircle(float xPos, float yPos, float SCALE, float R, float G, float B) {
+	public static void addCircle(float xPos, float yPos, float SCALE, float R,
+			float G, float B) {
 		bodies.add(new BodyRendering(universe, xPos, yPos, SCALE, R, G, B));
 	}
-	
-	public static void addCircle(float xPos, float yPos, float xVel, float yVel, float SCALE, float R, float G, float B) {
-		bodies.add(new BodyRendering(universe, xPos, yPos, xVel, yVel, SCALE, R, G, B));
+
+	public static void addCircle(float xPos, float yPos, float xVel,
+			float yVel, float SCALE, float R, float G, float B) {
+		bodies.add(new BodyRendering(universe, xPos, yPos, xVel, yVel, SCALE,
+				R, G, B));
 	}
 
-	public static void addCircle(float xPos, float yPos, float SCALE, float R, float G, float B, boolean isStatic) {
-		bodies.add(new BodyRendering(universe, xPos, yPos, SCALE, R, G, B, isStatic));
+	public static void addCircle(float xPos, float yPos, float SCALE, float R,
+			float G, float B, boolean isStatic) {
+		bodies.add(new BodyRendering(universe, xPos, yPos, SCALE, R, G, B,
+				isStatic));
 	}
-	/*public static void addCircle(float xPos, float yPos) {
-		addCircle(xPos, yPos, 0, 0);
-	}*/
+
+	/*
+	 * public static void addCircle(float xPos, float yPos) { addCircle(xPos,
+	 * yPos, 0, 0); }
+	 */
 
 	public static void togglePaused() {
 		paused = !paused;
 	}
 
 	public static void removeLast() {
-		if (!bodies.isEmpty()){
-			bodies.remove(bodies.size() - 1);
+		if (!bodies.isEmpty()) {
 			universe.removeBody();
+			bodies.remove(bodies.size() - 1);
 		}
+
 	}
 
 	public static void clear() {
@@ -110,6 +118,8 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 		universe.moveAll(new Vec(x, y));
 	}
 	
-	
+	public static boolean isEmpty(){
+		return bodies.isEmpty();
+	}
 
 }
