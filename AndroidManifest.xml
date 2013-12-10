@@ -20,7 +20,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name">
         <activity
-            android:name="com.admiralFedora.n_body.OrbitMenu"
+            android:name="com.admiralFedora.n_body.Orbit"
             android:label="@string/app_name" 
             android:screenOrientation="portrait">
             <intent-filter>

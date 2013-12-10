@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/flat_background"
-    tools:context=".OrbitMenu" >
+    tools:context=".Orbit" >
 
     <!--
          The primary full-screen view. This can be replaced with whatever view
