@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class Tutorial extends Activity {
 	ImageButton enterSimul;
@@ -35,6 +36,7 @@ public class Tutorial extends Activity {
 				Intent intent = new Intent(arg0.getContext(),OpenGL.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(intent);
+				Toast.makeText(arg0.getContext(),"Check out the settings page for more fun!", Toast.LENGTH_LONG).show();
 			}
 
 		});

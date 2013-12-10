@@ -256,6 +256,7 @@ public class Settings extends Activity{
 				Intent intent = new Intent(arg0.getContext(),OpenGL.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(intent);
+				
 			}
 			
 		});
