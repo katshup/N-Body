@@ -44,6 +44,7 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name="com.admiralFedora.n_body.About"
             android:screenOrientation="portrait"></activity>
+        <activity android:name="com.admiralFedora.n_body.License"></activity>
     </application>
 
 </manifest>

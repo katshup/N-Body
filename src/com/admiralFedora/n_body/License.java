@@ -4,18 +4,13 @@ import com.ccpa.n_body.R;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Window;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
 
 
-public class About extends Activity {
+public class License extends Activity {
 
-	ImageButton licenseButt;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -24,20 +19,7 @@ public class About extends Activity {
 		actionbar.setTitle(" ");
 		actionbar.setDisplayHomeAsUpEnabled(true);
 		
-		setContentView(R.layout.about);
-		
-		licenseButt = (ImageButton) findViewById(R.id.licenseButt);
-		licenseButt.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(arg0.getContext(),License.class);
-				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				startActivity(intent);
-			}
-
-		});
+		setContentView(R.layout.license);
 	}
 	
 	@Override
@@ -50,6 +32,4 @@ public class About extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-	
-	
 }
