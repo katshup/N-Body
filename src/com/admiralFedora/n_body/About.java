@@ -1,16 +1,15 @@
 package com.admiralFedora.n_body;
 
-import com.ccpa.n_body.R;
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+
+import com.ccpa.n_body.R;
 
 
 public class About extends Activity {

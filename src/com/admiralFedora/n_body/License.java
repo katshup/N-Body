@@ -1,12 +1,11 @@
 package com.admiralFedora.n_body;
 
-import com.ccpa.n_body.R;
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.Window;
+
+import com.ccpa.n_body.R;
 
 
 public class License extends Activity {

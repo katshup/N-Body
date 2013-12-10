@@ -17,9 +17,6 @@ package com.admiralFedora.n_body;
 
 import java.util.Random;
 
-import com.arshajii.nbody.backend.Universe;
-import com.ccpa.n_body.R;
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
@@ -29,6 +26,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.ccpa.n_body.R;
 
 public class OpenGL extends Activity {
 
