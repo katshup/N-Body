@@ -39,21 +39,7 @@ public class OpenGL extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.open_gl_view);
-		// requestWindowFeature(Window.FEATURE_NO_TITLE);
-		/*
-		 * nextButton2 = (Button) findViewById(R.id.button1); // Create a
-		 * GLSurfaceView instance and set it // as the ContentView for this
-		 * Activity // mGLView = new MyGLSurfaceView(this);
-		 * 
-		 * nextButton2.setOnClickListener(new View.OnClickListener() {
-		 * 
-		 * @Override public void onClick(View arg0) { Intent goToNextActivity =
-		 * new Intent(arg0.getContext(), CompassMode.class);
-		 * 
-		 * startActivity(goToNextActivity); } });
-		 */
 		ActionBar actionbar = getActionBar();
 		actionbar.setTitle(" ");
 		actionbar.setDisplayHomeAsUpEnabled(true);

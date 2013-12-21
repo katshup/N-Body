@@ -1,5 +1,8 @@
 package com.arshajii.nbody.backend;
 
+import android.R.string;
+import android.util.Log;
+
 public class Body extends Entity {
 
 	// velocity vector in m/s:
@@ -25,7 +28,8 @@ public class Body extends Entity {
 	public Vec forceFrom(Body other) {
 		Vec v = other.getPos().sub(getPos());
 		double r = v.mag();
-		return v.toUnitVector()
+		Log.d("radius",String.valueOf(r));
+		return v.toUnitVector() 
 				.mul(Const.G * mass * other.mass
 						/ (r * r + Const.SOFT * Const.SOFT));
 	}
