@@ -18,24 +18,24 @@ public class BodyRendering {
 
 	public BodyRendering(Universe universe, double x, double y, float SCALE, float R, float G, float B)
 	{ 
-		data = new Body(new Vec(x, y), new Vec(0, 0), SCALE*100); 
+		data = new Body(new Vec(x, y), new Vec(0, 0), SCALE*globalVar.massSCALE); 
 		universe.addBody(data);
-		image = new Circle((float)(data.getPos().getX()*Math.pow(10,-6)), (float)(data.getPos().getY()*Math.pow(10,-6)), SCALE, R, G, B); 
+		image = new Circle((float)data.getPos().getX()*globalVar.distSCALEDOWN, (float)(data.getPos().getY()*globalVar.distSCALEDOWN), SCALE, R, G, B); 
 	}
 	
 	public BodyRendering(Universe universe, double x, double y, float xVel, float yVel, float SCALE, float R, float G, float B)
 	{
 		Log.d("velocity",String.valueOf(xVel));
-		data = new Body(new Vec(x, y), new Vec(xVel, yVel), SCALE*100); 
+		data = new Body(new Vec(x, y), new Vec(xVel, yVel), SCALE*globalVar.massSCALE); 
 		universe.addBody(data);
-		image = new Circle((float)(data.getPos().getX()*Math.pow(10,-6)), (float)(data.getPos().getY()*Math.pow(10,-6)), SCALE, R, G, B); 
+		image = new Circle((float)(data.getPos().getX()*globalVar.distSCALEDOWN), (float)(data.getPos().getY()*globalVar.distSCALEDOWN), SCALE, R, G, B); 
 	}
 	
 	public BodyRendering(Universe universe, double x, double y, float SCALE, float R, float G, float B, boolean isStatic)
 	{ 
-		data = new StaticBody(new Vec(x, y), SCALE*200); 
+		data = new StaticBody(new Vec(x, y), SCALE*2*globalVar.massSCALE); 
 		universe.addBody(data);
-		image = new Circle((float)(data.getPos().getX()*Math.pow(10,-6)), (float)(data.getPos().getY()*Math.pow(10,-6)), SCALE, R, G, B); 
+		image = new Circle((float)(data.getPos().getX()*globalVar.distSCALEDOWN), (float)(data.getPos().getY()*globalVar.distSCALEDOWN), SCALE, R, G, B); 
 	}
 	
 
@@ -50,7 +50,7 @@ public class BodyRendering {
 	}*/
 
 	public void draw(GL10 gl) {
-		image.setXY((float)(data.getPos().getX()*Math.pow(10,-6)), (float)(data.getPos().getY()*Math.pow(10,-6)));
+		image.setXY((float)(data.getPos().getX()*globalVar.distSCALEDOWN), (float)(data.getPos().getY()*globalVar.distSCALEDOWN));
 		image.draw(gl);
 	}
 	
