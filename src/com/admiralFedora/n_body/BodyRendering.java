@@ -2,6 +2,8 @@ package com.admiralFedora.n_body;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import android.util.Log;
+
 import com.arshajii.nbody.backend.Body;
 import com.arshajii.nbody.backend.StaticBody;
 import com.arshajii.nbody.backend.Universe;
@@ -22,7 +24,8 @@ public class BodyRendering {
 	}
 	
 	public BodyRendering(Universe universe, double x, double y, float xVel, float yVel, float SCALE, float R, float G, float B)
-	{ 
+	{
+		Log.d("velocity",String.valueOf(xVel));
 		data = new Body(new Vec(x, y), new Vec(xVel, yVel), SCALE*100); 
 		universe.addBody(data);
 		image = new Circle((float)(data.getPos().getX()*Math.pow(10,-6)), (float)(data.getPos().getY()*Math.pow(10,-6)), SCALE, R, G, B); 

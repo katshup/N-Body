@@ -28,7 +28,7 @@ public class Body extends Entity {
 	public Vec forceFrom(Body other) {
 		Vec v = other.getPos().sub(getPos());
 		double r = v.mag();
-		Log.d("radius",String.valueOf(r));
+		//Log.d("radius",String.valueOf(r));
 		return v.toUnitVector() 
 				.mul(Const.G * mass * other.mass
 						/ (r * r + Const.SOFT * Const.SOFT));

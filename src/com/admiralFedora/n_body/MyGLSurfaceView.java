@@ -34,7 +34,7 @@ public class MyGLSurfaceView extends GLSurfaceView {
 	Random n = new Random();
 	// the user picks the size. defaults to 10
 	public static int size = 10;
-	private static final float VSCALE = 2E8f;
+	private static final float VSCALE = 2E-3f;
 
 	GestureDetector gestureDetector;
 	Context context;
@@ -186,13 +186,13 @@ public class MyGLSurfaceView extends GLSurfaceView {
 				if(!globalVar.uniformColor){
 					//                                             SCALE                           Red                 Green               Blue
 					MyGLRenderer.addCircle((float)(e.getX()*Math.pow(10,6)), (float)(e.getY()*Math.pow(10,6)), ((n.nextFloat() * size) + 3), ((n.nextFloat()))/4, ((n.nextFloat())), ((n.nextFloat())));
-					Log.d("Circle", e.getX() + ", " + e.getY());
+					//Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				}
 				else
 				{
 					MyGLRenderer.addCircle((float)(e.getX()*Math.pow(10,6)), (float)(e.getY()*Math.pow(10,6)), ((n.nextFloat() * size) + 3), globalVar.colorRed/4, globalVar.colorGreen, globalVar.colorBlue);
-					Log.d("Circle", e.getX() + ", " + e.getY());
+					//Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				}
 			}
@@ -200,13 +200,13 @@ public class MyGLSurfaceView extends GLSurfaceView {
 			{
 				if(!globalVar.uniformColor){
 					MyGLRenderer.addCircle((float)(e.getX()*Math.pow(10,6)), (float)(e.getY()*Math.pow(10,6)), size+3, ((n.nextFloat()))/4, ((n.nextFloat())), ((n.nextFloat())));
-					Log.d("Circle", e.getX() + ", " + e.getY());
+					//Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				}
 				else
 				{
 					MyGLRenderer.addCircle((float)(e.getX()*Math.pow(10,6)), (float)(e.getY()*Math.pow(10,6)), size+3, globalVar.colorRed/4, globalVar.colorGreen, globalVar.colorBlue);
-					Log.d("Circle", e.getX() + ", " + e.getY());
+					//Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				}
 			}
