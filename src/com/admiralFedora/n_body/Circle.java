@@ -12,7 +12,7 @@ public class Circle {
 	public float vertices[] = { 0.0f, 0.0f, 0.0f };
 	private FloatBuffer vertBuff;
 	private float x, y;
-	private float R,G,B;
+	public float R,G,B;
 
 	public Circle(float x, float y, float SCALE, float R, float G, float B) {
 		this.x = x;

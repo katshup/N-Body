@@ -34,7 +34,7 @@ public class MyGLSurfaceView extends GLSurfaceView {
 	Random n = new Random();
 	// the user picks the size. defaults to 10
 	public static int size = 10;
-	private static final float VSCALE = 2E1f;
+	private static final float VSCALE = 4E1f;
 
 	GestureDetector gestureDetector;
 	Context context;
@@ -81,7 +81,7 @@ public class MyGLSurfaceView extends GLSurfaceView {
 		public void onLongPress(MotionEvent e) {
 			if(!globalVar.uniformSize){
 				if(!globalVar.uniformColor){
-					//                                                                               SCALE        Red                 Green               Blue
+					//                                                                                             SCALE                        Red                 Green               Blue
 					MyGLRenderer.addCircle(e.getX()*globalVar.distSCALEUP, e.getY()*globalVar.distSCALEUP, size+(((n.nextFloat()))*10), ((n.nextFloat()))*2, ((n.nextFloat()))/4, ((n.nextFloat()))/4, true);
 					//Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
