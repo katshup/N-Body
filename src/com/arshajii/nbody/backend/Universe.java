@@ -45,12 +45,8 @@ public class Universe {
 	public void addBody(float xPos, float yPos, float xVel, float yVel, float SCALE, float R, float G, float B, boolean isStatic) {
 		synchronized (bodies) {
 			Log.d("SCALE",String.valueOf(SCALE));
-		if(isStatic){
-			bodies.add(new StaticBody(new Vec(xPos, yPos), SCALE*globalVar.massSCALE, SCALE, R, G, B));
-		}
-		else{
-			bodies.add(new Body(new Vec(xPos, yPos), new Vec(xVel, yVel), SCALE*globalVar.massSCALE, SCALE, R, G, B));
-		}
+
+			bodies.add(new Body(new Vec(xPos, yPos), new Vec(xVel, yVel), SCALE*globalVar.massSCALE, SCALE, R, G, B, isStatic));
 		}
 	}
 	

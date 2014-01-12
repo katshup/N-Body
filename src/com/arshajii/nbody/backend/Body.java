@@ -20,12 +20,16 @@ public class Body extends Entity {
 	
 	// size
 	public float size;
+	
+	// static body
+	private boolean isStatic;
 
-	public Body(Vec position, Vec velocity, double mass, float SCALE,  float R, float G, float B) {
+	public Body(Vec position, Vec velocity, double mass, float SCALE,  float R, float G, float B, boolean isStatic) {
 		super(position);
 		this.velocity = velocity;
 		this.mass = mass;
 		size = SCALE;
+		this.isStatic = isStatic;
 		image = new Circle((float)position.getX()*globalVar.distSCALEDOWN, (float)(position.getY()*globalVar.distSCALEDOWN), SCALE, R, G, B);
 	}
 
@@ -56,18 +60,33 @@ public class Body extends Entity {
 		float R = (image.R + (absorpee.image.R*sizeDiff))/2;
 		float G = (image.G + (absorpee.image.G*sizeDiff))/2;
 		float B = (image.B + (absorpee.image.B*sizeDiff))/2;
-		mass = (mass+absorpee.mass)*.75;
-		size = (float) ((size+(absorpee.size*.4)));
-		image = new Circle((float)getPos().getX(),(float)getPos().getY(), size, R, G,B);		
+		mass = (mass+absorpee.mass*sizeDiff);
+		if (size > absorpee.size) {
+			size = (float) ((size+(absorpee.size*.4)));
+		}
+		else {
+			size = (float) ((size*.4)+absorpee.size);
+		}
+		velocity = new Vec(velocity.getX()*.4, velocity.getY()*.4);
+		//setPos(absorpee.getPos());
+		image = new Circle((float)getPos().getX(),(float)getPos().getY(), size, R, G,B);
+		if(this.isStatic || absorpee.isStatic) {
+			this.isStatic = true;
+		}
 		//return new Body(getPos(),getVelocity(), mass+absorpee.mass, size+absorpee.size, R, G, B);
 	}
 
 	public void move(Vec netForce) {
-		// update velocity according to net force:
-		velocity = velocity.add(netForce.mul(Const.dT / mass));
+		if (!isStatic){
+			// update velocity according to net force:
+			velocity = velocity.add(netForce.mul(Const.dT / mass));
 
-		// update position according to new velocity:
-		setPos(getPos().add(velocity.mul(Const.dT)));
+			// update position according to new velocity:
+			setPos(getPos().add(velocity.mul(Const.dT)));
+		}
+		else {
+			// do nothing
+		}
 	}
 
 	public void moveDirect(Vec delta) {
@@ -75,11 +94,11 @@ public class Body extends Entity {
 	}
 
 	public void reverseVx() {
-		velocity = new Vec(-.75*velocity.getX(), .75*velocity.getY());
+		velocity = new Vec(-.9*velocity.getX(), .9*velocity.getY());
 	}
 
 	public void reverseVy() {
-		velocity = new Vec(.75*velocity.getX(), -.75*velocity.getY());
+		velocity = new Vec(.9*velocity.getX(), -.9*velocity.getY());
 	}
 	
 	public void draw(GL10 gl) {
