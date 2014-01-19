@@ -11,5 +11,5 @@ public class Const {
 	public static final double SOLAR_MASS = 1.989E30;
 
 	// gravity softening factor (units: m)
-	public static final double SOFT =  1;//9E5;
+	public static final double SOFT =  1; //1E6;
 }

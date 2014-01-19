@@ -79,16 +79,6 @@
         android:text=" " />
 
     <ImageButton
-        android:id="@+id/reset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/enterSimul"
-        android:layout_below="@+id/colorSchemeButt"
-        android:layout_marginTop="14dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/reset" />
-
-    <ImageButton
         android:id="@+id/uniSizeButt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -96,5 +86,32 @@
         android:layout_below="@+id/massSize"
         android:background="@android:color/transparent"
         android:src="@drawable/uniform_size" />
+
+    <ImageButton
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/enterSimul"
+        android:layout_alignLeft="@+id/enterSimul"
+        android:layout_marginBottom=" 16dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/reset" />
+
+    <ImageButton
+        android:id="@+id/realismButt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/colorSchemeButt"
+        android:layout_below="@+id/colorSchemeButt"
+        android:background="@android:color/transparent"
+        android:src="@drawable/realism" />
+
+    <CheckBox
+        android:id="@+id/realism"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/imageButton1"
+        android:text="" />
 
 </RelativeLayout>

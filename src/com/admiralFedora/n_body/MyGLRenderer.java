@@ -36,6 +36,9 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 	private static final Universe universe = new Universe();
 
 	public static boolean paused = false;
+	
+	public static int Width;
+	public static int Height;
 
 	/* Called once to set up the view's OpenGL ES environment. */
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
@@ -54,6 +57,9 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 		gl.glMatrixMode(GL10.GL_PROJECTION);
 		gl.glLoadIdentity();
 		gl.glOrthof(0, width, height, 0, -1, 1);
+		
+		Width = width;
+		Height = height;
 
 		universe.addWalls(width*globalVar.distSCALEUP, 0, height*globalVar.distSCALEUP, 0);
 	}

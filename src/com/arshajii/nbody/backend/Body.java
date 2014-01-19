@@ -94,11 +94,11 @@ public class Body extends Entity {
 	}
 
 	public void reverseVx() {
-		velocity = new Vec(-.9*velocity.getX(), .9*velocity.getY());
+		velocity = new Vec(-.8*velocity.getX(), .8*velocity.getY());
 	}
 
 	public void reverseVy() {
-		velocity = new Vec(.9*velocity.getX(), -.9*velocity.getY());
+		velocity = new Vec(.8*velocity.getX(), -.8*velocity.getY());
 	}
 	
 	public void draw(GL10 gl) {
