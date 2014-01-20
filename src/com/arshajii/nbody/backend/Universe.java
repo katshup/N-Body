@@ -73,7 +73,7 @@ public class Universe {
 					if (body1 != body2) {
 						netForce.inPlaceAdd(body1.forceFrom(body2));
 						double d = body1.distance(body2)*globalVar.distSCALEDOWN;
-						if (d <= body2.size) {
+						if (d <= body2.size && globalVar.realism) {
 						// there is some weirdness going on. removing body2 removes both bodies apparently... 
 						// also a static body becomes unstatic if collision occurs between static and non static
 							body2.absorption(body1);

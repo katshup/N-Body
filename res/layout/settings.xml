@@ -111,7 +111,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/imageButton1"
+        android:layout_alignTop="@+id/realismButt"
         android:text="" />
 
 </RelativeLayout>

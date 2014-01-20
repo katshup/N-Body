@@ -103,10 +103,9 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 		//bodies.add(new BodyRendering(universe, xPos, yPos, SCALE, R, G, B, isStatic));
 	}
 
-	/*
-	 * public static void addCircle(float xPos, float yPos) { addCircle(xPos,
-	 * yPos, 0, 0); }
-	 */
+	public static void changeWalls() {
+		universe.addWalls(Width*globalVar.distSCALEUP, 0, Height*globalVar.distSCALEUP, 0);
+	}
 
 	public static void togglePaused() {
 		paused = !paused;
@@ -132,5 +131,6 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 	public static boolean isEmpty(){
 		return universe.empty();
 	}
+	
 
 }

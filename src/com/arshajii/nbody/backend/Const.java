@@ -5,11 +5,11 @@ public class Const {
 	public static double G = 6.67384E-9; // norm: 6.67384E-11
 
 	// time delta (units: s)
-	public static final double dT = 21600; // 6 hours instead of 24 hours
+	public static double dT = 21600; // 6 hours instead of 24 hours
 
 	// solar mass (units: kg)
 	public static final double SOLAR_MASS = 1.989E30;
 
 	// gravity softening factor (units: m)
-	public static final double SOFT =  1; //1E6;
+	public static double SOFT =  1; //1E6;
 }

@@ -25,8 +25,8 @@ public class Settings extends Activity{
 	
 	SeekBar gravConstant;
 	SeekBar massSize;
-	CheckBox uniformSize, uniformColor;
-	ImageButton enterSimul, reset, colorSchemeButt, uniSizeButt;
+	CheckBox uniformSize, uniformColor, realism;
+	ImageButton enterSimul, reset, colorSchemeButt, uniSizeButt, realismButt;
 	// this will let us keep track of where we came from
 	String activity;
 	// have this variable prevents us from getting stuck in a screen loop
@@ -80,6 +80,8 @@ public class Settings extends Activity{
 		reset = (ImageButton) findViewById(R.id.reset);
 		colorSchemeButt = (ImageButton) findViewById(R.id.colorSchemeButt);
 		uniSizeButt = (ImageButton) findViewById(R.id.uniSizeButt);
+		realismButt = (ImageButton) findViewById(R.id.realismButt);
+		realism = (CheckBox) findViewById(R.id.realism);
 		
 		if(Const.G == 6.67384E-11)
 		{
@@ -132,6 +134,7 @@ public class Settings extends Activity{
 		
 		uniformSize.setChecked(globalVar.uniformSize);
 		uniformColor.setChecked(globalVar.uniformColor);
+		realism.setChecked(globalVar.realism);
 		
 		gravConstant.setOnSeekBarChangeListener( new OnSeekBarChangeListener() {
 
@@ -246,6 +249,36 @@ public class Settings extends Activity{
 			
 		});
 		
+		realism.setOnCheckedChangeListener( new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
+				globalVar.realism = isChecked;
+				if(globalVar.realism){
+					globalVar.distSCALEUP = (float) Math.pow(10, 4);
+					globalVar.distSCALEDOWN = (float) Math.pow(10,-4);
+					globalVar.massSCALE = (float) Math.pow(10, 13);
+					Const.SOFT = 1;
+					Const.dT = 21600;
+					MyGLSurfaceView.VSCALE = 4E3f;
+					Toast.makeText(getApplicationContext(),"Realism mode is on.", (Toast.LENGTH_SHORT)/2).show();
+				}
+				else {
+					globalVar.distSCALEUP = 1f;
+					globalVar.distSCALEDOWN = 1f;
+					globalVar.massSCALE = (float) Math.pow(10, 2);
+					Const.SOFT = 3E3;
+					Const.dT = 86400;
+					MyGLSurfaceView.VSCALE = 2E8f;
+					Toast.makeText(getApplicationContext(),"Realism mode is off.", (Toast.LENGTH_SHORT)/2).show();
+				}
+				MyGLRenderer.changeWalls();
+			}
+				
+		});
+		
+		
 		enterSimul.setOnClickListener( new OnClickListener() {
 
 			@Override
@@ -264,13 +297,13 @@ public class Settings extends Activity{
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Const.G = 6.67384E-7;
+				Const.G = 6.67384E-9;
 				MyGLSurfaceView.size = 10;
 				globalVar.uniformSize = false;
 				globalVar.uniformColor = false;
 				uniformSize.setChecked(globalVar.uniformSize);
 				uniformColor.setChecked(globalVar.uniformColor);
-				gravConstant.setProgress(100);
+				gravConstant.setProgress(50);
 				massSize.setProgress(15);
 				Toast.makeText(getApplicationContext(),"The settings have been reverted back to default.", (Toast.LENGTH_SHORT)/2).show();
 			}
@@ -300,6 +333,20 @@ public class Settings extends Activity{
 				else
 				{
 					uniformSize.setChecked(true);
+				}
+				
+			}
+		});
+		
+		realismButt.setOnClickListener( new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				if(globalVar.realism){
+					realism.setChecked(false);
+				}
+				else
+				{
+					realism.setChecked(true);
 				}
 				
 			}
