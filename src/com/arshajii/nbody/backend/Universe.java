@@ -21,14 +21,14 @@ public class Universe {
 	private final CopyOnWriteArrayList<Body> bodies = new CopyOnWriteArrayList<Body>();
 
 	private int time = 0;
-	
+
 	public static double gravConst = Const.G;
 
 	boolean walled = false;
 	private double xWallUp, xWallDown;
 	private double yWallUp, yWallDown;
-	
-	//private final GL10 gl;
+
+	// private final GL10 gl;
 
 	public Universe() {
 
@@ -42,65 +42,72 @@ public class Universe {
 		this.bodies.addAll(Arrays.asList(bodies));
 	}
 
-	public void addBody(float xPos, float yPos, float xVel, float yVel, float SCALE, float R, float G, float B, boolean isStatic) {
+	public void addBody(float xPos, float yPos, float xVel, float yVel,
+			float SCALE, float R, float G, float B, boolean isStatic) {
 		synchronized (bodies) {
-			Log.d("SCALE",String.valueOf(SCALE));
+			Log.d("SCALE", String.valueOf(SCALE));
 
-			bodies.add(new Body(new Vec(xPos, yPos), new Vec(xVel, yVel), SCALE*globalVar.massSCALE, SCALE, R, G, B, isStatic));
+			bodies.add(new Body(new Vec(xPos, yPos), new Vec(xVel, yVel), SCALE
+					* globalVar.massSCALE, SCALE, R, G, B, isStatic));
 		}
 	}
-	
+
 	public void removeBody() {
-		//Log.d("attempt to remove",String.valueOf(this.bodies.size()));
+		// Log.d("attempt to remove",String.valueOf(this.bodies.size()));
 		bodies.remove(bodies.size() - 1);
-		//Log.d("removed",String.valueOf(this.bodies.size()));
+		// Log.d("removed",String.valueOf(this.bodies.size()));
 	}
 
 	public void step(GL10 gl) {
 		synchronized (bodies) {
-			//Iterator<Body> bod1 = bodies.listIterator();
-			//Iterator<Body> bod2;
-			//while (bod1.hasNext()) {
 			for (Body body1 : bodies) {
-				//Body body1 = bod1.next();
+
 				body1.draw(gl);
 				MutableVec netForce = new MutableVec(0, 0);
-				
-				//Iterator<Body> bod2 = bodies.listIterator();
-				//while (bod2.hasNext()) {
+
 				for (Body body2 : bodies) {
-					//Body body2 = bod2.next();
+
 					if (body1 != body2) {
 						netForce.inPlaceAdd(body1.forceFrom(body2));
-						double d = body1.distance(body2)*globalVar.distSCALEDOWN;
+						double d = body1.distance(body2)
+								* globalVar.distSCALEDOWN;
 						if (d <= body2.size && globalVar.realism) {
-						// there is some weirdness going on. removing body2 removes both bodies apparently... 
-						// also a static body becomes unstatic if collision occurs between static and non static
+							// there is some weirdness going on. removing body2
+							// removes both bodies apparently...
+							// also a static body becomes unstatic if collision
+							// occurs between static and non static
 							body2.absorption(body1);
 							bodies.remove(body1);
-							//Log.d("herr","derr");
-							
+
 						}
 					}
 				}
 
 				body1.move(netForce);
 
-				if (walled) {
-					Vec pos = body1.getPos();
+				Vec pos = body1.getPos();
 
-					if (pos.getX() >= xWallUp || pos.getX() <= xWallDown) {
-						body1.reverseVx();
-					}
-
-					if (pos.getY() >= yWallUp || pos.getY() <= yWallDown) {
-						body1.reverseVy();
-					}
+				if (pos.getX() >= xWallUp || pos.getX() <= xWallDown) {
+					body1.reverseVx();
 				}
+
+				if (pos.getY() >= yWallUp || pos.getY() <= yWallDown) {
+					body1.reverseVy();
+				}
+
 			}
 		}
 
 		time++;
+	}
+	
+	public void refactor (float massCHNG, float distCHNG) {
+		synchronized (bodies) {
+			for (Body body: bodies) {
+				body.refactor(massCHNG, distCHNG);
+				Log.d("food","goop");
+			}
+		}
 	}
 
 	public void clear() {
@@ -156,18 +163,17 @@ public class Universe {
 
 		System.out.println();
 	}
-	
-	public boolean empty(){
+
+	public boolean empty() {
 		return bodies.isEmpty();
 	}
-	
-	public void draw(GL10 gl){
+
+	public void draw(GL10 gl) {
 		synchronized (bodies) {
 			for (Body body1 : bodies) {
 				body1.draw(gl);
 			}
 		}
 	}
-	
-	
+
 }

@@ -30,13 +30,15 @@ import com.arshajii.nbody.backend.Vec;
 
 public class MyGLRenderer implements GLSurfaceView.Renderer {
 
-	/*private static List<BodyRendering> bodies = Collections
-			.synchronizedList(new ArrayList<BodyRendering>());*/
+	/*
+	 * private static List<BodyRendering> bodies = Collections
+	 * .synchronizedList(new ArrayList<BodyRendering>());
+	 */
 
 	private static final Universe universe = new Universe();
 
 	public static boolean paused = false;
-	
+
 	public static int Width;
 	public static int Height;
 
@@ -57,11 +59,12 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 		gl.glMatrixMode(GL10.GL_PROJECTION);
 		gl.glLoadIdentity();
 		gl.glOrthof(0, width, height, 0, -1, 1);
-		
+
 		Width = width;
 		Height = height;
 
-		universe.addWalls(width*globalVar.distSCALEUP, 0, height*globalVar.distSCALEUP, 0);
+		universe.addWalls(width * globalVar.distSCALEUP, 0, height
+				* globalVar.distSCALEUP, 0);
 	}
 
 	/* Called for each redraw of the view. */
@@ -70,17 +73,14 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 		gl.glMatrixMode(GL10.GL_MODELVIEW);
 		gl.glLoadIdentity();
 
-		/*synchronized (bodies) {
-			for (BodyRendering dr : bodies) {
-				dr.draw(gl);
-			}
-		}*/
+		/*
+		 * synchronized (bodies) { for (BodyRendering dr : bodies) {
+		 * dr.draw(gl); } }
+		 */
 
 		if (!paused) {
 			universe.step(gl);
-		}
-		else
-		{
+		} else {
 			universe.draw(gl);
 		}
 	}
@@ -88,23 +88,30 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 	public static void addCircle(float xPos, float yPos, float SCALE, float R,
 			float G, float B) {
 		universe.addBody(xPos, yPos, 0, 0, SCALE, R, G, B, false);
-		//bodies.add(new BodyRendering(universe, xPos, yPos, SCALE, R, G, B));
+		// bodies.add(new BodyRendering(universe, xPos, yPos, SCALE, R, G, B));
 	}
 
 	public static void addCircle(float xPos, float yPos, float xVel,
 			float yVel, float SCALE, float R, float G, float B) {
-		universe.addBody(xPos, yPos, xVel, yVel, SCALE, R, G,B, false);
-		//bodies.add(new BodyRendering(universe, xPos, yPos, xVel, yVel, SCALE, R, G, B));
+		universe.addBody(xPos, yPos, xVel, yVel, SCALE, R, G, B, false);
+		// bodies.add(new BodyRendering(universe, xPos, yPos, xVel, yVel, SCALE,
+		// R, G, B));
 	}
 
 	public static void addCircle(float xPos, float yPos, float SCALE, float R,
 			float G, float B, boolean isStatic) {
 		universe.addBody(xPos, yPos, 0, 0, SCALE, R, G, B, isStatic);
-		//bodies.add(new BodyRendering(universe, xPos, yPos, SCALE, R, G, B, isStatic));
+		// bodies.add(new BodyRendering(universe, xPos, yPos, SCALE, R, G, B,
+		// isStatic));
 	}
 
 	public static void changeWalls() {
-		universe.addWalls(Width*globalVar.distSCALEUP, 0, Height*globalVar.distSCALEUP, 0);
+		universe.addWalls(Width * globalVar.distSCALEUP, 0, Height
+				* globalVar.distSCALEUP, 0);
+	}
+	
+	public static void refactor(float massCHNG, float distCHNG) {
+		universe.refactor(massCHNG, distCHNG);
 	}
 
 	public static void togglePaused() {
@@ -114,23 +121,22 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 	public static void removeLast() {
 		if (!universe.empty()) {
 			universe.removeBody();
-			//bodies.remove(bodies.size() - 1);
+			// bodies.remove(bodies.size() - 1);
 		}
 
 	}
 
 	public static void clear() {
-		//bodies.clear();
+		// bodies.clear();
 		universe.clear();
 	}
 
 	public void moveAll(float x, float y) {
 		universe.moveAll(new Vec(x, y));
 	}
-	
-	public static boolean isEmpty(){
+
+	public static boolean isEmpty() {
 		return universe.empty();
 	}
-	
 
 }
