@@ -110,8 +110,8 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 				* globalVar.distSCALEUP, 0);
 	}
 	
-	public static void refactor(float massCHNG, float distCHNG) {
-		universe.refactor(massCHNG, distCHNG);
+	public static void refactor(float massCHNG, float distCHNG, float velCHNG) {
+		universe.refactor(massCHNG, distCHNG, velCHNG);
 	}
 
 	public static void togglePaused() {

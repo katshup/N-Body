@@ -34,7 +34,7 @@ public class MyGLSurfaceView extends GLSurfaceView {
 	Random n = new Random();
 	// the user picks the size. defaults to 10
 	public static int size = 10;
-	public static float VSCALE = 4E3f;
+	public static float VSCALE = 2E8f; //4E3f;
 
 	GestureDetector gestureDetector;
 	Context context;

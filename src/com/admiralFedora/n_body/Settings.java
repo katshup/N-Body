@@ -248,7 +248,7 @@ public class Settings extends Activity {
 					Const.SOFT = 1;
 					Const.dT = 21600;
 					MyGLSurfaceView.VSCALE = 4E3f;
-					MyGLRenderer.refactor((float) Math.pow(10, 11), (float) Math.pow(10, 4));
+					MyGLRenderer.refactor((float) Math.pow(10, 11), (float) Math.pow(10, 4), (float) (5 * Math.pow(10, 4)));
 					Toast.makeText(getApplicationContext(),
 							"Realism mode is on.", (Toast.LENGTH_SHORT) / 2)
 							.show();
@@ -260,7 +260,7 @@ public class Settings extends Activity {
 					Const.SOFT = 3E3;
 					Const.dT = 86400;
 					MyGLSurfaceView.VSCALE = 2E8f;
-					MyGLRenderer.refactor((float) Math.pow(10, -11), (float) Math.pow(10, -4));
+					MyGLRenderer.refactor((float) Math.pow(10, -11), (float) Math.pow(10, -4), (float) ((.2) * Math.pow(10, -4)));
 					Toast.makeText(getApplicationContext(),
 							"Realism mode is off.", (Toast.LENGTH_SHORT) / 2)
 							.show();
@@ -293,8 +293,10 @@ public class Settings extends Activity {
 				MyGLSurfaceView.size = 10;
 				globalVar.uniformSize = false;
 				globalVar.uniformColor = false;
+				globalVar.realism = false;
 				uniformSize.setChecked(globalVar.uniformSize);
 				uniformColor.setChecked(globalVar.uniformColor);
+				realism.setChecked(globalVar.realism);
 				gravConstant.setProgress(50);
 				massSize.setProgress(15);
 				Toast.makeText(getApplicationContext(),

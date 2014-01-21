@@ -80,11 +80,10 @@ public class Body extends Entity {
 		// size+absorpee.size, R, G, B);
 	}
 
-	public void refactor(float massCHNG, float distCHNG) {
-		Log.d("posBefore",String.valueOf(getPos()));
+	public void refactor(float massCHNG, float distCHNG, float velCHNG) {
 		this.setPos(new Vec(getPos().getX() * distCHNG, getPos().getY() * distCHNG));
-		Log.d("posAfter",String.valueOf(getPos()));
 		this.mass = this.mass * massCHNG;
+		this.velocity = new Vec(velocity.x * velCHNG, velocity.y * velCHNG);
 		image = new Circle((float) getPos().getX(), (float) getPos().getY(),
 				size, image.R, image.G, image.B);
 	}

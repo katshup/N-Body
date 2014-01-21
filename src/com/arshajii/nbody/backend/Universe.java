@@ -101,10 +101,10 @@ public class Universe {
 		time++;
 	}
 	
-	public void refactor (float massCHNG, float distCHNG) {
+	public void refactor (float massCHNG, float distCHNG, float velCHNG) {
 		synchronized (bodies) {
 			for (Body body: bodies) {
-				body.refactor(massCHNG, distCHNG);
+				body.refactor(massCHNG, distCHNG, velCHNG);
 				Log.d("food","goop");
 			}
 		}
