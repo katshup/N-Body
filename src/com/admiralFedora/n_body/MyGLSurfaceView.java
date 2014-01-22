@@ -35,7 +35,8 @@ public class MyGLSurfaceView extends GLSurfaceView {
 	// the user picks the size. defaults to 10
 	public static int size = 10;
 	public static float VSCALE = 2E8f; //4E3f;
-
+	public static float greenBlue;
+	
 	GestureDetector gestureDetector;
 	Context context;
 
@@ -80,22 +81,23 @@ public class MyGLSurfaceView extends GLSurfaceView {
 
 		@Override
 		public void onLongPress(MotionEvent e) {
+			greenBlue = n.nextFloat();
 			if (!globalVar.uniformSize) {
 				if (!globalVar.uniformColor) {
 					// SCALE Red Green Blue
 					MyGLRenderer.addCircle(e.getX() * globalVar.distSCALEUP,
 							e.getY() * globalVar.distSCALEUP,
 							size + (((n.nextFloat())) * 10),
-							(float) (((n.nextFloat())) * 2 + .1),
-							((n.nextFloat())) / 4, ((n.nextFloat())) / 4, true);
+							(float) (((n.nextFloat())) * 2 + .25),
+							(greenBlue) / 5, (greenBlue) / 5, true);
 					// Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				} else {
 					MyGLRenderer.addCircle(e.getX() * globalVar.distSCALEUP,
 							e.getY() * globalVar.distSCALEUP,
 							size + (((n.nextFloat())) * 10),
-							(float) (globalVar.colorRed * 2 + .1),
-							globalVar.colorGreen / 4, globalVar.colorBlue / 4,
+							(float) (globalVar.colorRed * 2 + .25),
+							globalVar.colorGreen / 2, globalVar.colorGreen / 2,
 							true);
 					// Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
@@ -105,18 +107,16 @@ public class MyGLSurfaceView extends GLSurfaceView {
 					MyGLRenderer.addCircle(e.getX() * globalVar.distSCALEUP,
 							e.getY() * globalVar.distSCALEUP,
 							size + (((n.nextFloat())) * 10),
-							(float) (((n.nextFloat())) * 2 + .1),
-							((n.nextFloat())) / 4, ((n.nextFloat())) / 4, true);
-					// Log.d("Circle", e.getX() + ", " + e.getY());
+							(float) (((n.nextFloat())) * 2 + .25),
+							(greenBlue) / 5, (greenBlue) / 5, true);
 					requestRender();
 				} else {
 					MyGLRenderer.addCircle(e.getX() * globalVar.distSCALEUP,
 							e.getY() * globalVar.distSCALEUP,
 							size + (((n.nextFloat())) * 10),
-							(float) (globalVar.colorRed * 2 + .1),
-							globalVar.colorGreen / 4, globalVar.colorBlue / 4,
+							(float) (globalVar.colorRed * 2 + .25),
+							globalVar.colorGreen / 2, globalVar.colorGreen / 2,
 							true);
-					// Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				}
 			}
@@ -125,7 +125,6 @@ public class MyGLSurfaceView extends GLSurfaceView {
 		@Override
 		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
 				float velocityY) {
-			Log.d("OnFling", String.valueOf(velocityX));
 			if (!globalVar.uniformSize) {
 				if (!globalVar.uniformColor) {
 					// SCALE Red Green Blue
@@ -133,8 +132,8 @@ public class MyGLSurfaceView extends GLSurfaceView {
 							e1.getY() * globalVar.distSCALEUP, velocityX
 									/ VSCALE, velocityY / VSCALE,
 							((n.nextFloat() * size) + 3),
-							((n.nextFloat())) / 4, ((n.nextFloat())),
-							((n.nextFloat())));
+							((n.nextFloat())) - .9f, ((n.nextFloat()) + .1f),
+							((n.nextFloat())) + .1f);
 					// Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				} else {
@@ -142,8 +141,8 @@ public class MyGLSurfaceView extends GLSurfaceView {
 							e1.getY() * globalVar.distSCALEUP, velocityX
 									/ VSCALE, velocityY / VSCALE,
 							((n.nextFloat() * size) + 3),
-							globalVar.colorRed / 4, globalVar.colorGreen,
-							globalVar.colorBlue);
+							globalVar.colorRed - .9f, globalVar.colorGreen + .1f,
+							globalVar.colorBlue + .1f);
 					// Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				}
@@ -152,16 +151,16 @@ public class MyGLSurfaceView extends GLSurfaceView {
 					MyGLRenderer.addCircle(e1.getX() * globalVar.distSCALEUP,
 							e1.getY() * globalVar.distSCALEUP, velocityX
 									/ VSCALE, velocityY / VSCALE, size + 3,
-							((n.nextFloat())) / 4, ((n.nextFloat())),
-							((n.nextFloat())));
+							((n.nextFloat())) - .9f, ((n.nextFloat()) + .1f),
+							((n.nextFloat())) + .1f);
 					// Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				} else {
 					MyGLRenderer.addCircle(e1.getX() * globalVar.distSCALEUP,
 							e1.getY() * globalVar.distSCALEUP, velocityX
 									/ VSCALE, velocityY / VSCALE, size + 3,
-							globalVar.colorRed / 4, globalVar.colorGreen,
-							globalVar.colorBlue);
+							globalVar.colorRed - .9f, globalVar.colorGreen + .1f,
+							globalVar.colorBlue + .1f);
 					// Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				}
@@ -215,16 +214,16 @@ public class MyGLSurfaceView extends GLSurfaceView {
 					MyGLRenderer.addCircle(e.getX() * globalVar.distSCALEUP,
 							e.getY() * globalVar.distSCALEUP,
 							((n.nextFloat() * size) + 3),
-							((n.nextFloat())) / 4, ((n.nextFloat())),
-							((n.nextFloat())));
+							((n.nextFloat())) - .9f, ((n.nextFloat()) + .1f),
+							((n.nextFloat())) + .1f);
 					// Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				} else {
 					MyGLRenderer.addCircle(e.getX() * globalVar.distSCALEUP,
 							e.getY() * globalVar.distSCALEUP,
 							((n.nextFloat() * size) + 3),
-							globalVar.colorRed / 4, globalVar.colorGreen,
-							globalVar.colorBlue);
+							globalVar.colorRed - .9f, globalVar.colorGreen + .1f,
+							globalVar.colorBlue + .1f);
 					// Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				}
@@ -232,15 +231,15 @@ public class MyGLSurfaceView extends GLSurfaceView {
 				if (!globalVar.uniformColor) {
 					MyGLRenderer.addCircle(e.getX() * globalVar.distSCALEUP,
 							e.getY() * globalVar.distSCALEUP, size + 3,
-							((n.nextFloat())) / 4, ((n.nextFloat())),
-							((n.nextFloat())));
+							((n.nextFloat())) - .9f, ((n.nextFloat()) + .1f),
+							((n.nextFloat())) + .1f);
 					// Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				} else {
 					MyGLRenderer.addCircle(e.getX() * globalVar.distSCALEUP,
 							e.getY() * globalVar.distSCALEUP, size + 3,
-							globalVar.colorRed / 4, globalVar.colorGreen,
-							globalVar.colorBlue);
+							globalVar.colorRed - .9f, globalVar.colorGreen + .1f,
+							globalVar.colorBlue + .1f);
 					// Log.d("Circle", e.getX() + ", " + e.getY());
 					requestRender();
 				}

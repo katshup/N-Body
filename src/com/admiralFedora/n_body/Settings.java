@@ -265,7 +265,7 @@ public class Settings extends Activity {
 							"Realism mode is off.", (Toast.LENGTH_SHORT) / 2)
 							.show();
 				}
-				MyGLRenderer.changeWalls();
+				//MyGLRenderer.changeWalls(globalVar.realism);
 				progress.dismiss();
 			}
 

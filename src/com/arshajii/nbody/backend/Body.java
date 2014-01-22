@@ -10,7 +10,7 @@ import com.admiralFedora.n_body.globalVar;
 public class Body extends Entity {
 
 	// velocity vector in m/s:
-	private Vec velocity;
+	public Vec velocity;
 
 	// mass in kg:
 	private double mass;
@@ -52,17 +52,24 @@ public class Body extends Entity {
 				.mul(Const.G * mass * other.mass
 						/ (r * r + Const.SOFT * Const.SOFT));
 	}
+	
+	public Vec forceFromClose(Body other) {
+		Vec v = other.getPos().sub(getPos());
+		double r = v.mag();
+		// Log.d("radius",String.valueOf(r*globalVar.distSCALEDOWN));
+		return v.toUnitVector()
+				.mul(Const.G * mass * other.mass
+						/ (r * r + Const.SOFT2 * Const.SOFT2));
+	}
 
 	public double distance(Body other) {
-		Vec v = other.getPos().sub(getPos());
-		return v.mag();
+		double r = other.getPos().dist(getPos());
+		//double r = Math.pow(getPos().getX() - other.getPos().getX(),2) + Math.pow(getPos().getY() - other.getPos().getY(),2);
+		return r;
 	}
 
 	public void absorption(Body absorpee) {
 		float sizeDiff = absorpee.size / size;
-		float R = (image.R + (absorpee.image.R * sizeDiff)) / 2;
-		float G = (image.G + (absorpee.image.G * sizeDiff)) / 2;
-		float B = (image.B + (absorpee.image.B * sizeDiff)) / 2;
 		mass = (mass + absorpee.mass * sizeDiff);
 		if (size > absorpee.size) {
 			size = (float) ((size + (absorpee.size * .4)));
@@ -71,10 +78,20 @@ public class Body extends Entity {
 		}
 		velocity = new Vec(velocity.getX() * .4, velocity.getY() * .4);
 		// setPos(absorpee.getPos());
-		image = new Circle((float) getPos().getX(), (float) getPos().getY(),
-				size, R, G, B);
 		if (this.isStatic || absorpee.isStatic) {
+			float R = (image.R + (absorpee.image.R * sizeDiff)) / 2 + .25f;
+			float G = (image.G + (absorpee.image.G * sizeDiff)) / 3;
+			float B = (image.B + (absorpee.image.B * sizeDiff)) / 3;
+			image = new Circle((float) getPos().getX(), (float) getPos().getY(),
+					size, R, G, B);
 			this.isStatic = true;
+		}
+		else {
+			float R = (image.R + (absorpee.image.R * sizeDiff)) / 4;
+			float G = (image.G + (absorpee.image.G * sizeDiff)) / 2 + .1f;
+			float B = (image.B + (absorpee.image.B * sizeDiff)) / 2 + .1f;
+			image = new Circle((float) getPos().getX(), (float) getPos().getY(),
+					size, R, G, B);
 		}
 		// return new Body(getPos(),getVelocity(), mass+absorpee.mass,
 		// size+absorpee.size, R, G, B);

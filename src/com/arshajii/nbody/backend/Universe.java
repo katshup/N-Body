@@ -45,7 +45,6 @@ public class Universe {
 	public void addBody(float xPos, float yPos, float xVel, float yVel,
 			float SCALE, float R, float G, float B, boolean isStatic) {
 		synchronized (bodies) {
-			Log.d("SCALE", String.valueOf(SCALE));
 
 			bodies.add(new Body(new Vec(xPos, yPos), new Vec(xVel, yVel), SCALE
 					* globalVar.massSCALE, SCALE, R, G, B, isStatic));
@@ -69,16 +68,14 @@ public class Universe {
 
 					if (body1 != body2) {
 						netForce.inPlaceAdd(body1.forceFrom(body2));
-						double d = body1.distance(body2)
-								* globalVar.distSCALEDOWN;
-						if (d <= body2.size && globalVar.realism) {
-							// there is some weirdness going on. removing body2
-							// removes both bodies apparently...
-							// also a static body becomes unstatic if collision
-							// occurs between static and non static
-							body2.absorption(body1);
-							bodies.remove(body1);
+						if (globalVar.realism) {
+							double d = body1.distance(body2)
+									* globalVar.distSCALEDOWN;
+							if (d <= body2.size) {
+								body2.absorption(body1);
+								bodies.remove(body1);
 
+							}
 						}
 					}
 				}
@@ -100,12 +97,11 @@ public class Universe {
 
 		time++;
 	}
-	
-	public void refactor (float massCHNG, float distCHNG, float velCHNG) {
+
+	public void refactor(float massCHNG, float distCHNG, float velCHNG) {
 		synchronized (bodies) {
-			for (Body body: bodies) {
+			for (Body body : bodies) {
 				body.refactor(massCHNG, distCHNG, velCHNG);
-				Log.d("food","goop");
 			}
 		}
 	}
@@ -128,6 +124,8 @@ public class Universe {
 		this.xWallDown = xWallDown;
 		this.yWallUp = yWallUp;
 		this.yWallDown = yWallDown;
+		
+		Log.d("walls",String.valueOf(yWallUp));
 
 		walled = true;
 	}

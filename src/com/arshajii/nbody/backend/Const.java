@@ -12,4 +12,6 @@ public class Const {
 
 	// gravity softening factor (units: m)
 	public static double SOFT =  3E3; //1; //1E6;
+	
+	public static double SOFT2 = 1E100;
 }

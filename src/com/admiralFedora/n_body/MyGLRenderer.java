@@ -54,7 +54,6 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 	 * screen orientation changes.
 	 */
 	public void onSurfaceChanged(GL10 gl, int width, int height) {
-		Log.d("Surface", width + ", " + height);
 		gl.glViewport(0, 0, width, height);
 		gl.glMatrixMode(GL10.GL_PROJECTION);
 		gl.glLoadIdentity();
@@ -63,8 +62,10 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 		Width = width;
 		Height = height;
 
-		universe.addWalls(width * globalVar.distSCALEUP, 0, height
-				* globalVar.distSCALEUP, 0);
+		/*universe.addWalls(width * globalVar.distSCALEUP, 0, height
+				* globalVar.distSCALEUP, 0);*/
+		universe.addWalls(Width * 1.25 * globalVar.distSCALEUP, -(Width * .25 * globalVar.distSCALEUP), Height * 1.25
+				* globalVar.distSCALEUP, -(Height * .25 * globalVar.distSCALEUP));
 	}
 
 	/* Called for each redraw of the view. */
@@ -105,9 +106,9 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 		// isStatic));
 	}
 
-	public static void changeWalls() {
-		universe.addWalls(Width * globalVar.distSCALEUP, 0, Height
-				* globalVar.distSCALEUP, 0);
+	public static void changeWalls(boolean realism) {
+		universe.addWalls(Width * 1.5 * globalVar.distSCALEUP, -(Width * .5 * globalVar.distSCALEUP), Height * 1.5
+				* globalVar.distSCALEUP, -(Height * .5 * globalVar.distSCALEUP));
 	}
 	
 	public static void refactor(float massCHNG, float distCHNG, float velCHNG) {
