@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/abagher/img/master/logo-orbit.png" alt="Orbit N-Body Simulator" width="226">
-</p>
-
 # Orbit, N-Body Simulator
 
 ### About
